@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Doctor's name outside of the main section -->
+    <h1 id="doctor-name">Welcome Dr. "Name"</h1>
+
+    <main>
+        <!-- Patient list section -->
+        <section class="patient-list">
+            <h2>Patient List</h2>
+            <ul id="patient-list">
+                <!-- Patient items will be populated here -->
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Health AI</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="logout.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
