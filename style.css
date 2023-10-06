@@ -1,0 +1,119 @@
+body,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+nav {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.about-us {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 90px);
+}
+
+.login-form,
+.registration-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h2,
+.registration-form h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+}
+.social-signup {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #3b5998;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.social-button:hover {
+    background-color: #2d4373;
+}
