@@ -27,7 +27,7 @@ body {
     border-radius: 5px;
 }
 
-.patient-details {
+.patient-list {
     flex-basis: 45%;
     padding: 20px;
     border: 1px solid #ccc;
