@@ -13,6 +13,21 @@
         android:theme="@style/Theme.HealthAI"
         tools:targetApi="31">
         <activity
+            android:name=".dashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".formCompleted"
+            android:exported="false" />
+        <activity
+            android:name=".HealthFormActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".HealthFormActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".HealthFormActivity1"
+            android:exported="false" />
+        <activity
             android:name=".GPActivity"
             android:exported="false" />
         <activity
@@ -25,10 +40,10 @@
             android:name=".SignedUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity3"
+            android:name=".SignUpActivity2"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity2"
+            android:name=".SignUpActivity1"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity1"

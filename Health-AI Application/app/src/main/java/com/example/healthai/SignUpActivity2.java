@@ -14,22 +14,13 @@ public class SignUpActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up2);
 
-        Button send1 = findViewById(R.id.button4);
-        send1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent send1 = new Intent(SignUpActivity2.this, SignUpActivity3.class);
-                startActivity(send1);
-            }
+        Button send1 = findViewById(R.id.button7);
+        send1.setOnClickListener(view -> {
+            Intent send11 = new Intent(SignUpActivity2.this, HealthFormActivity1.class);
+            startActivity(send11);
         });
 
-        Button btnBack = findViewById(R.id.button3);
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        Button btnBack = findViewById(R.id.button6);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 }

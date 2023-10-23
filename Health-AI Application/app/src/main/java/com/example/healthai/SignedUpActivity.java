@@ -14,13 +14,10 @@ public class SignedUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signed_up);
 
-        Button send1 = findViewById(R.id.button8);
-        send1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent send1 = new Intent(SignedUpActivity.this, MainActivity.class);
-                startActivity(send1);
-            }
+        Button send1 = findViewById(R.id.button12);
+        send1.setOnClickListener(view -> {
+            Intent send11 = new Intent(SignedUpActivity.this, dashboardActivity.class);
+            startActivity(send11);
         });
     }
 }

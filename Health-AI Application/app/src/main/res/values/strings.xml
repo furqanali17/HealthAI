@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HealthAI</string>
+    <string name="healthai">HealthAI</string>
 </resources>

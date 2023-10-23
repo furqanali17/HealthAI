@@ -14,7 +14,7 @@ public class SignUpActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up1);
 
-        Button send1 = findViewById(R.id.button10);
+        Button send1 = findViewById(R.id.button4);
         send1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -23,7 +23,7 @@ public class SignUpActivity1 extends AppCompatActivity {
             }
         });
 
-        Button btnBack = findViewById(R.id.button11);
+        Button btnBack = findViewById(R.id.button3);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
