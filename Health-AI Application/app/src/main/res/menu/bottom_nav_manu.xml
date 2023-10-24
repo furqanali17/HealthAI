@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/predictions"
+        android:title="Predictions"
+        android:icon="@drawable/heart"/>
+
+    <item android:id="@+id/fitness"
+        android:title="Fitness"
+        android:icon="@drawable/unique"/>
+
+    <item android:id="@+id/gp"
+        android:title="GP"
+        android:icon="@drawable/doctor"/>
+
+    <item android:id="@+id/user"
+        android:title="User"
+        android:icon="@drawable/profile"/>
+</menu>

@@ -1,11 +1,14 @@
 
-package com.example.healthai;
+package com.example.healthai.formActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.example.healthai.R;
+import com.example.healthai.signupActivity.SignedUpActivity;
 
 public class formCompleted extends AppCompatActivity {
 
