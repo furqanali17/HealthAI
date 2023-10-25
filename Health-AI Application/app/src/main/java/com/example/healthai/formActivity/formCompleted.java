@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.healthai.R;
-import com.example.healthai.signupActivity.SignedUpActivity;
+import com.example.healthai.mainAppActivity.dashboardActivity;
 
 public class formCompleted extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class formCompleted extends AppCompatActivity {
 
         Button send1 = findViewById(R.id.button11);
         send1.setOnClickListener(view -> {
-            Intent send11 = new Intent(formCompleted.this, SignedUpActivity.class);
+            Intent send11 = new Intent(formCompleted.this, dashboardActivity.class);
             startActivity(send11);
         });
     }

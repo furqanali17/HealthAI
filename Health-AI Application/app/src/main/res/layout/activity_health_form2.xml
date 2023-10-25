@@ -45,8 +45,8 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="320dp"
-        android:layout_height="89dp"
+        android:layout_width="324dp"
+        android:layout_height="103dp"
         android:text="Have you ever been diagnosed with high blood pressure?"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

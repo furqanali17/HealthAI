@@ -195,6 +195,7 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="73dp"
@@ -206,6 +207,34 @@
         android:clickable="true"
         app:srcCompat="@drawable/chatbot"
         android:focusable="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/logout"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="29dp"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/userDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/top_bottom_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="email"
+        app:srcCompat="@drawable/logout" />
+
+    Button
+        android:id="@+id/formButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/healthai_form" />
 
 
 </RelativeLayout>

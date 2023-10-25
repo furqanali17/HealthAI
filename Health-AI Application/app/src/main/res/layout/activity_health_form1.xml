@@ -45,8 +45,8 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="320dp"
-        android:layout_height="89dp"
+        android:layout_width="322dp"
+        android:layout_height="109dp"
         android:text="Are you a current smoker or have you been a smoker in the past?"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,15 +10,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import com.example.healthai.R;
 import com.example.healthai.fragments.FitnessFragment;
 import com.example.healthai.fragments.GpFragment;
 import com.example.healthai.fragments.UserFragment;
 import com.example.healthai.fragments.predictionFragment;
+import com.example.healthai.loginActivity.login;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class dashboardActivity extends AppCompatActivity implements View.OnClickListener{
     public CardView predictionCard, fitnessCard, gpCard, userCard;
+    FloatingActionButton fab_logout;
+    TextView userDetail;
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +44,40 @@ public class dashboardActivity extends AppCompatActivity implements View.OnClick
         fitnessCard.setOnClickListener(this);
         gpCard.setOnClickListener(this);
         userCard.setOnClickListener(this);
+
+        auth = FirebaseAuth.getInstance();
+        fab_logout = findViewById(R.id.fab_logout);
+        userDetail = findViewById(R.id.userDetail);
+        user = auth.getCurrentUser();
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), login.class);
+            startActivity(intent);
+            finish();
+        }else {
+            userDetail.setText(user.getEmail());
+        }
+
+        fab_logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getApplicationContext(), login.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent;
+        Intent intent = new Intent(this, navActivity1.class);
 
         if (view.getId() == R.id.predictions) {
-            intent = new Intent(this, navActivity1.class);
-            startActivity(intent);
+            intent.putExtra("fragment_id", "predictions");
         } else if (view.getId() == R.id.fitness) {
-            intent = new Intent(this, navActivity1.class);
-            startActivity(intent);
-        }else if (view.getId() == R.id.gp) {
-            intent = new Intent(this, navActivity1.class);
-            startActivity(intent);
-        }else if (view.getId() == R.id.user) {
-            intent = new Intent(this, navActivity1.class);
-            startActivity(intent);
+            intent.putExtra("fragment_id", "fitness");
+        } else if (view.getId() == R.id.gp) {
+            intent.putExtra("fragment_id", "gp");
+        } else if (view.getId() == R.id.user) {
+            intent.putExtra("fragment_id", "user");
         }
+        startActivity(intent);
     }
 }
