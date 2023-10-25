@@ -1,11 +1,7 @@
 import pandas as pd
 import numpy as np
-
-np.set_printoptions(precision=3, suppress=True)
-
 import tensorflow as tf
-from tensorflow.keras import layers
-
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 def split_features(dataset, categorical_columns, numerical_columns):
     feature_columns = []
@@ -20,17 +16,15 @@ def split_features(dataset, categorical_columns, numerical_columns):
 
 
 def split_train_test(split_percentage, dataset, label):
-    train = dataset.sample(frac=split_percentage, random_state=0)
-    X_train = train.drop(columns=[label])
-    y_train = train[label]
-    test = dataset.drop(train.index)
-    X_test = test.drop(columns=[label])
-    y_test = test[label]
+    X_train = dataset.sample(frac=split_percentage, random_state=0)
+    y_train = X_train[label]
+    X_test = dataset.drop(X_train.index)
+    y_test = X_test[label]
 
     return X_train, X_test, y_train, y_test
 
 
-def make_input_function(data_df, label_df, num_epochs, shuffle=True, batch_size=32):
+def make_input_function(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):
     def input_function():
         ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))
         if shuffle:
@@ -63,14 +57,32 @@ cc_vocabulary, cc_features = split_features(cc_dataset, CC_DATASET_CATCOL, CC_DA
 cc_labels = cc_dataset['hasColonCancer']
 
 cc_X_train, cc_X_test, cc_y_train, cc_y_test = split_train_test(0.8, cc_dataset, 'hasColonCancer')
-print(cc_X_train.head(), cc_y_train.head())
 
+cc_train_input_fn = make_input_function(cc_X_train, cc_y_train)
+cc_eval_input_fn = make_input_function(cc_X_test, cc_y_test, num_epochs=1, shuffle=False)
 
-# Heart Disease Dataset
-hd_vocabulary, hd_features = split_features(hd_dataset, HD_DATASET_CATCOL, HD_DATASET_NUMCOL)
-hd_labels = hd_dataset['HeartDisease']
+cc_linear_estimate = tf.estimator.LinearClassifier(feature_columns=cc_features)
 
-hd_X_train, hd_X_test, hd_y_train, hd_y_test = split_train_test(0.8, hd_dataset, 'HeartDisease')
+cc_linear_estimate.train(cc_train_input_fn)
+cc_result = cc_linear_estimate.evaluate(cc_eval_input_fn)
+
+print(cc_result['accuracy'])
+
+# # Heart Disease Dataset
+# hd_vocabulary, hd_features = split_features(hd_dataset, HD_DATASET_CATCOL, HD_DATASET_NUMCOL)
+# hd_labels = hd_dataset['HeartDisease']
+#
+# hd_X_train, hd_X_test, hd_y_train, hd_y_test = split_train_test(0.8, hd_dataset, 'HeartDisease')
+#
+# hd_train_input_fn = make_input_function(hd_X_train, hd_y_train)
+# hd_eval_input_fn = make_input_function(hd_X_test, hd_y_test, num_epochs=1, shuffle=False)
+#
+# hd_linear_estimate = tf.estimator.LinearClassifier(feature_columns=hd_features)
+#
+# hd_linear_estimate.train(hd_train_input_fn)
+# hd_result = hd_linear_estimate.evaluate(hd_eval_input_fn)
+#
+# print(hd_result['accuracy'])
 
 # Liver Cancer Dataset
 lc_dataset = lc_dataset.drop(columns=['Patient Id', 'index'])
@@ -78,3 +90,13 @@ lc_vocabulary, lc_features = split_features(lc_dataset, LC_DATASET_CATCOL, LC_DA
 lc_labels = lc_dataset['Level']
 
 lc_X_train, lc_X_test, lc_y_train, lc_y_test = split_train_test(0.8, lc_dataset, 'Level')
+
+lc_train_input_fn = make_input_function(lc_X_train, lc_y_train)
+lc_eval_input_fn = make_input_function(lc_X_test, lc_y_test, num_epochs=1, shuffle=False)
+
+lc_linear_estimate = tf.estimator.LinearClassifier(feature_columns=lc_features)
+
+lc_linear_estimate.train(lc_train_input_fn)
+lc_result = lc_linear_estimate.evaluate(lc_eval_input_fn)
+
+print(lc_result['accuracy'])
