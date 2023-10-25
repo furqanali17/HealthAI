@@ -13,13 +13,12 @@
         <ul>
             <li><a href="#">Dashboard</a></li>
             <li><a href="profile.html">Profile</a></li>
-            <li><a href="#" id="logout-link">Logout</a></li>
+            <li><a id="logout" style="cursor: pointer;">Logout</a></li>
         </ul>
     </nav>
 
     <!-- Doctor's name outside of the main section -->
-    <h1 id="doctor-name">Welcome Dr. "Name"</h1>
-
+    <h1 id="professional-name">Welcome Dr. Name</h1>
     <main>
         <!-- Patient list section -->
         <section class="patient-list">
@@ -34,9 +33,9 @@
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <script src="script.js"></script>
-    <script src="logout.js"></script>
-    <script src="dashboard.js"></script>
+    <script type="module" src="database.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="dashboard.js"></script>
 </body>
 
 </html>

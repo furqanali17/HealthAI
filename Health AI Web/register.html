@@ -20,18 +20,17 @@
     <main>
         <section class="registration-form">
             <h2>Register</h2>
-            <form action="dashboard.html" method="get">
-                <input type="text" placeholder="Full Name">
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Confirm Password">
-                <button type="submit">Register</button>
+            <form id="registerForm">
+                <input type="text" id="fullName" placeholder="Full Name">
+                <input type="text" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                <button type="submit" id="register" name="register">Register</button>
             </form>
             <div class="social-signup">
                 <p>Or sign up with:</p>
-                <a href="#" class="social-button">Facebook</a>
-                <a href="#" class="social-button">Instagram</a>
-                <a href="#" class="social-button">Google</a>
+                <button type="button" id="facebookButton" class="social-button">Facebook</button>
+                <button type="button" id="instagramButton" class="social-button">Instagram</button>
+                <button type="button" id="googleButton" class="social-button">Google</button>
             </div>
         </section>
     </main>
@@ -39,7 +38,7 @@
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <script src="script.js"></script>
+    <script type="module" src="register.js"></script>
 </body>
 
 </html>

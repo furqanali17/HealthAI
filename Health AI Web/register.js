@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-import { getFirestore, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCTMf-Pttj9U-KZ_kOFIBEWQgrWPkG4MJA",
@@ -15,9 +15,9 @@ const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 const auth = getAuth();
 
-function validateLoginForm(email, password) {
-    if (!email || !password) {
-        alert("Both fields are required!");
+function validateForm(fullname, email, password) {
+    if (!fullname || !email || !password) {
+        alert("All fields are required!");
         return false;
     }
 
@@ -35,32 +35,29 @@ function validateLoginForm(email, password) {
     return true;
 }
 
-document.getElementById('loginForm').addEventListener('submit', function (event) {
+document.getElementById('registerForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
+    const fullname = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    if (validateLoginForm(email, password)) {
-        signInWithEmailAndPassword(auth, email, password)
+    if (validateForm(fullname, email, password)) {
+        createUserWithEmailAndPassword(auth, email, password)
             .then((professionalCredential) => {
                 const professional = professionalCredential.user;
 
-                // Create a reference to the specific document in the "professionals" collection
+                // Create a reference to a specific document in the "professionals" collection
                 const professionalDocRef = doc(firestore, 'professionals', professional.uid);
 
-                return getDoc(professionalDocRef)
-                    .then((docSnapshot) => {
-                        if (docSnapshot.exists()) {
-                            const lastLoginTime = new Date().toISOString();
-                            // Update the last login time in the Firestore document
-                            return updateDoc(professionalDocRef, { lastLogin: lastLoginTime });
-                        } else {
-                            alert('Professional not found in the database');
-                        }
-                    });
+                // Set the data for the document
+                return setDoc(professionalDocRef, {
+                    fullname: fullname,
+                    email: email
+                });
             })
             .then(() => {
+                alert('User created and data saved!');
                 // Redirect to the dashboard page
                 window.location.href = 'dashboard.html';
             })

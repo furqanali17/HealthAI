@@ -1,11 +1,24 @@
-// JavaScript for handling the logout prompt
-const logoutLink = document.getElementById('logout-link');
+// logout.js
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
-logoutLink.addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the default link behavior
-    const confirmLogout = confirm('Are you sure you want to log out?');
-    if (confirmLogout) {
-        // Redirect to the logout page or perform logout action
-        window.location.href = 'index.html';
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const auth = getAuth();
+
+    document.getElementById('logout').addEventListener('click', async (event) => {
+        event.preventDefault();  // Prevent the default link behavior
+
+        // Show a confirmation dialog
+        const confirmLogout = confirm("Are you sure you want to log out?");
+        if (confirmLogout) {
+            try {
+                // Sign out the user
+                await signOut(auth);
+                // Redirect to the login page
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Error during logout:', error);
+                alert('Logout failed. Please try again.');
+            }
+        }
+    });
 });
