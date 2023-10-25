@@ -20,20 +20,24 @@
     <main>
         <section class="login-form">
             <h2>Login</h2>
-            <form action="dashboard.html" method="get">
-                <input id = "loginEmail" type="text" placeholder="Email">
-                <input id = "loginPassword" type="password" placeholder="Password">
-                <button id = "btn-Login" type="submit">Login</button>
+            <form id="loginForm">
+                <input type="text" id="loginEmail" placeholder="Email">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button type="submit" id="btnLogin">Login</button>
             </form>
+            <div class="social-login">
+                <p>Or log in with:</p>
+                <button type="button" id="facebookLoginButton" class="social-button">Facebook</button>
+                <button type="button" id="instagramLoginButton" class="social-button">Instagram</button>
+                <button type="button" id="googleLoginButton" class="social-button">Google</button>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <script src="script.js"></script>
-    <script src="login.js"></script>
-
+    <script type="module" src="login.js"></script>
 </body>
 
 </html>
