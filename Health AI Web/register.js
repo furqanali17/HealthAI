@@ -35,35 +35,37 @@ function validateForm(fullname, email, password) {
     return true;
 }
 
-document.getElementById('registerForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+async function registerUser(fullname, email, password) {
+    try {
+        const professionalCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const professional = professionalCredential.user;
 
-    const fullname = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        const professionalDocRef = doc(firestore, 'professionals', professional.uid);
+        await setDoc(professionalDocRef, {
+            fullname: fullname,
+            email: email
+        });
 
-    if (validateForm(fullname, email, password)) {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((professionalCredential) => {
-                const professional = professionalCredential.user;
-
-                // Create a reference to a specific document in the "professionals" collection
-                const professionalDocRef = doc(firestore, 'professionals', professional.uid);
-
-                // Set the data for the document
-                return setDoc(professionalDocRef, {
-                    fullname: fullname,
-                    email: email
-                });
-            })
-            .then(() => {
-                alert('User created and data saved!');
-                // Redirect to the dashboard page
-                window.location.href = 'dashboard.html';
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
+        alert('User created and data saved!');
+        window.location.href = 'dashboard.html';
+    } catch (error) {
+        alert(error.message);
     }
-});
+}
+
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+    registerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fullname = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (validateForm(fullname, email, password)) {
+            registerUser(fullname, email, password);
+        }
+    });
+} else {
+    console.error('Register form not found.');
+}

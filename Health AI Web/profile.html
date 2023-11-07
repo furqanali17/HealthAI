@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor's Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <nav>
         <ul>
@@ -17,32 +15,26 @@
         </ul>
     </nav>
 
+    <h1 id="professional-name">Welcome Dr. Name</h1>
     <main>
-        <div class="dashboard-container">
-            <section class="doctor-details">
-                <h2>Doctor Details</h2>
-                <div>
-                    <h3>Doctor's Name</h3>
-                    <p id="doctor-name">Dr. Ali</p>
-                </div>
-                <div>
-                    <h3>Specialty</h3>
-                    <p id="doctor-specialty">Cardiologist</p>
-                </div>
-                <div>
-                    <h3>Contact Information</h3>
-                    <p id="doctor-contact">Email: doctor@example.com<br>Phone: (123) 456-7890</p>
-                </div>
-            </section>
-        </div>
+        <section class="doctor-details">
+            <h2>Doctor Details</h2>
+            <div>
+                <h3>Doctor's Name</h3>
+                <p id="doctor-name">[Doctor's Name Here]</p>
+            </div>
+            <div>
+                <h3>Contact Information</h3>
+                <p id="doctor-contact">[Email Here]</p>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <script src="script.js"></script>
-    <script src="logout.js"></script>
-    <script src="dashboard.js"></script>
+    <script type="module" src="database.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="profile.js"></script>
 </body>
-
 </html>
