@@ -10,4 +10,8 @@
     <string name="click_to_register">Click to Register</string>
     <string name="click_to_login">Click to login</string>
     <string name="healthai_form">HealthAI Form</string>
+    <string name="record_insurance_details">Record Insurance details</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile">Mobile</string>
 </resources>

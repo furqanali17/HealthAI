@@ -1,0 +1,101 @@
+<!-- insurance_details_layout.xml -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insurance Details"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/acme"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter your Insurance details"
+            android:textSize="14sp"
+            android:layout_margin="10dp" />
+
+
+        <EditText
+            android:id="@+id/editTextInsuranceCompany"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Insurance Company"
+            android:inputType="text"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/editTextInsuranceYear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Insurance Year"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextPolicyNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Policy Number"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextTypeOfInsurance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Type of Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextSubscriberID"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Subscriber ID"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextGroupNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Group Number"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextInsurancePhone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Insurance Phone"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/editTextPolicyHolderName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/blue_800"
+            android:hint="Policy Holder's Name"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Save" />
+    </LinearLayout>

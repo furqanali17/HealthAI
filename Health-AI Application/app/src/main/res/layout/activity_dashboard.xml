@@ -230,11 +230,4 @@
         android:text="email"
         app:srcCompat="@drawable/logout" />
 
-    Button
-        android:id="@+id/formButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/healthai_form" />
-
-
 </RelativeLayout>
