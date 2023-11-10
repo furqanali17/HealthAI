@@ -1,9 +1,7 @@
-// logout.js
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+import { auth } from './database_connection.js'; 
+import { signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const auth = getAuth();
-
     document.getElementById('logout').addEventListener('click', async (event) => {
         event.preventDefault();  // Prevent the default link behavior
 
