@@ -1,19 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCTMf-Pttj9U-KZ_kOFIBEWQgrWPkG4MJA",
-    authDomain: "dfos-healthai.firebaseapp.com",
-    projectId: "dfos-healthai",
-    storageBucket: "dfos-healthai.appspot.com",
-    messagingSenderId: "259705293143",
-    appId: "1:259705293143:web:889a820ce52326e592d612"
-};
-
-const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);
-const auth = getAuth();
+import { firestore, auth } from './database_connection.js';
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
 function validateForm(fullname, email, password) {
     if (!fullname || !email || !password) {
