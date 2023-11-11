@@ -103,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:text="BMI"
                     android:textSize="18sp"
+                    android:layout_marginTop="15dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
 
@@ -110,9 +111,9 @@
                     android:id="@+id/bmi_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -138,6 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="BMR"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -147,9 +149,9 @@
                     android:id="@+id/bmr_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -175,10 +177,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Body Water"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/bodyWater_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -204,10 +215,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Body Fat"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/bodyFat_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -234,10 +254,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Metabolic Age"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/metAge_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -263,10 +291,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Muscle Mass"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/musMass_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>
