@@ -42,45 +42,45 @@
         android:id="@+id/dash_gridlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="3"
-        android:columnCount="2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="60dp"
         android:layout_below="@+id/top_view"
-        >
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="25dp"
+        android:columnCount="2"
+        android:rowCount="3">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/predictions"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="12dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="1"
+            android:layout_rowWeight="1"
             android:layout_column="0"
-            android:layout_margin="8dp"
-            android:id="@+id/predictions">
+            android:layout_columnWeight="1"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp">
 
             <LinearLayout
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/heart"
-                    android:layout_gravity="center_horizontal" />
-                
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/heart" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Predictions"
                     android:layout_gravity="center_horizontal"
+                    android:text="Predictions"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -93,7 +93,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="12dp">
 
@@ -129,7 +129,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="12dp">
 
@@ -165,7 +165,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="12dp">
 

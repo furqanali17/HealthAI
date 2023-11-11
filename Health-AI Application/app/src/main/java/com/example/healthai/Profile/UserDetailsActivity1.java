@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Profile;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.healthai.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

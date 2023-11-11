@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.healthai.R;
 import com.example.healthai.Insurance.insuranceDetailsActivity;
-import com.example.healthai.UserDetailsActivity1;
+import com.example.healthai.Profile.UserDetailsActivity1;
 
 public class UserFragment extends Fragment {
     @Override

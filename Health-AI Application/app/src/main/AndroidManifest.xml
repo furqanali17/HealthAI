@@ -15,10 +15,10 @@
         android:theme="@style/Theme.HealthAI"
         tools:targetApi="31" >
         <activity
-            android:name=".UserDetailsActivity1"
+            android:name=".Profile.UserDetailsActivity1"
             android:exported="false" />
         <activity
-            android:name=".UserDetailsActivity2"
+            android:name=".Profile.UserDetailsActivity2"
             android:exported="false" />
         <activity
             android:name=".Insurance.insuranceDetailsActivity"

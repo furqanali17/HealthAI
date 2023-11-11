@@ -1,4 +1,4 @@
-package com.example.healthai;
+package com.example.healthai.Profile;
 
 public class UserDetails {
     String name, sex, mobile;

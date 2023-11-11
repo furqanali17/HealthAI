@@ -14,4 +14,11 @@
     <string name="personal_details">Personal Details</string>
     <string name="full_name">Full Name</string>
     <string name="mobile">Mobile</string>
+    <string name="insurance_details">Insurance Details</string>
+    <string name="fitness">Fitness</string>
+    <string name="age">Age</string>
+    <string name="weight_in_kg">Weight (in kg)</string>
+    <string name="height_in_cm">Height (in cm)</string>
+    <string name="calculate">Calculate</string>
+    <string name="sex_m_f">Sex (M/F)</string>
 </resources>
