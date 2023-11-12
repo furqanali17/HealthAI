@@ -20,7 +20,7 @@ if __name__ == '__main__':
                                                             ['35-39', 3], ['40-44', 4], ['45-49', 5], ['50-54', 6],
                                                             ['55-59', 7], ['60-64', 8], ['65-69', 9], ['70-74', 10],
                                                             ['75-79', 11], ['80 or older', 12]])
-    hd_dataset = replace_column(hd_dataset, 'Race', [['White', 0], ['Black', 1], ['Asian', 2], ['American Indian', 3], ['Hispanic', 4], ['Other', 5]])
+    hd_dataset = replace_column(hd_dataset, 'Race', [['White', 0], ['Black', 1], ['Asian', 2], ['American Indian/Alaskan Native', 3], ['Hispanic', 4], ['Other', 5]])
     hd_dataset = replace_column(hd_dataset, 'Diabetic', [['No', 0], ['Yes', 1],
                                                          ['No, borderline diabetes', 2], ['Yes (during pregnancy)', 3]])
     hd_dataset = replace_column(hd_dataset, 'GenHealth', [['Poor', 0], ['Fair', 1], ['Good', 2],
