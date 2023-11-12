@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.GpFragment">
+    tools:context=".GP.gp_details_activity1">
 
     <TextView
         android:id="@+id/GP_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/gp"
-        android:textSize="28sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="@font/acme"
-        android:layout_margin="25dp"/>
+        android:text="@string/general_practitioner"
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/intro_gp"
@@ -26,30 +30,37 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="@string/intro_GP_string"
+        android:text="@string/sex_ofGp"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/assign_gpTextView"
+    <RadioGroup
+        android:id="@+id/sex_rdg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/intro_gp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:text="@string/assign_GP_string"
-        android:textSize="18sp" />
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/male_rdb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/Female_rdb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/female" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/findGP_btn"
-        android:layout_width="132dp"
-        android:layout_height="77dp"
-        android:layout_below="@+id/assign_gpTextView"
+        android:id="@+id/searchGP_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_below="@+id/sex_rdg"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:text="@string/find_gp"
-        android:textSize="20sp"/>
+        android:text="@string/search"
+        android:textSize="20sp" />
+
 </RelativeLayout>

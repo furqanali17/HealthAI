@@ -21,4 +21,24 @@
     <string name="height_in_cm">Height (in cm)</string>
     <string name="calculate">Calculate</string>
     <string name="sex_m_f">Sex (M/F)</string>
+    <string name="intro_GP_string">HealthAI employs many GPs from around the world to provide you with all the medical Guidance you need</string>
+    <string name="assign_GP_string">Please assign yourself a gp</string>
+    <string name="find_gp">Find GP</string>
+    <string name="gp">GP</string>
+    <string name="sex_ofGp">Preferred sex of the GP</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="search">Search</string>
+    <string name="gp_list">List of the gp to choose from</string>
+    <string name="general_practitioner">General Practitioner</string>
+    <string name="call_your_gp">Call your GP</string>
+    <string name="please_enter_your_insurance_details">Please enter your Insurance details</string>
+    <string name="insurance_company">Insurance Company</string>
+    <string name="insurance_year">Insurance Year</string>
+    <string name="policy_number">Policy Number</string>
+    <string name="type_of_insurance">Type of Insurance</string>
+    <string name="subscriber_id">Subscriber ID</string>
+    <string name="group_number">Group Number</string>
+    <string name="insurance_phone">Insurance Phone</string>
+    <string name="save">Save</string>
 </resources>

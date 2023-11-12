@@ -25,7 +25,6 @@ public class UserDetailsActivity1 extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference userReference;
-    FirebaseDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

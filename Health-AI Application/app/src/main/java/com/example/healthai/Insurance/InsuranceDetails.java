@@ -1,14 +1,14 @@
 package com.example.healthai.Insurance;
 
 public class InsuranceDetails {
-    String insuranceCompany, insuranceYear, policyNumber, typeOfInsurance, subscriberID, groupNumber, insurancePhone, policyHolderName;
+    String insuranceCompany, insuranceYear, policyNumber, typeOfInsurance, subscriberID, groupNumber, insurancePhone;
 
     public InsuranceDetails() {
         // Default constructor required for calls to DataSnapshot.getValue(InsuranceDetails.class)
     }
 
     public InsuranceDetails(String insuranceCompany, String insuranceYear, String policyNumber, String typeOfInsurance,
-                            String subscriberID, String groupNumber, String insurancePhone, String policyHolderName) {
+                            String subscriberID, String groupNumber, String insurancePhone) {
         this.insuranceCompany = insuranceCompany;
         this.insuranceYear = insuranceYear;
         this.policyNumber = policyNumber;
@@ -16,7 +16,6 @@ public class InsuranceDetails {
         this.subscriberID = subscriberID;
         this.groupNumber = groupNumber;
         this.insurancePhone = insurancePhone;
-        this.policyHolderName = policyHolderName;
     }
 
     public String getInsuranceCompany() {
@@ -75,11 +74,4 @@ public class InsuranceDetails {
         this.insurancePhone = insurancePhone;
     }
 
-    public String getPolicyHolderName() {
-        return policyHolderName;
-    }
-
-    public void setPolicyHolderName(String policyHolderName) {
-        this.policyHolderName = policyHolderName;
-    }
 }

@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insurance Details"
+            android:text="@string/insurance_details"
             android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please enter your Insurance details"
+            android:text="@string/please_enter_your_insurance_details"
             android:textSize="14sp"
             android:layout_margin="10dp" />
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Insurance Company"
+            android:hint="@string/insurance_company"
             android:inputType="text"
             android:textColor="@color/black" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Insurance Year"
+            android:hint="@string/insurance_year"
             android:inputType="number" />
 
         <EditText
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Policy Number"
+            android:hint="@string/policy_number"
             android:inputType="text" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Type of Insurance"
+            android:hint="@string/type_of_insurance"
             android:inputType="text" />
 
         <EditText
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Subscriber ID"
+            android:hint="@string/subscriber_id"
             android:inputType="text" />
 
         <EditText
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Group Number"
+            android:hint="@string/group_number"
             android:inputType="text" />
 
         <EditText
@@ -80,16 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/blue_800"
-            android:hint="Insurance Phone"
+            android:hint="@string/insurance_phone"
             android:inputType="phone" />
-
-        <EditText
-            android:id="@+id/editTextPolicyHolderName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/blue_800"
-            android:hint="Policy Holder's Name"
-            android:inputType="text" />
 
         <Button
             android:id="@+id/buttonSave"
@@ -97,5 +89,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Save" />
+            android:text="@string/save" />
     </LinearLayout>
