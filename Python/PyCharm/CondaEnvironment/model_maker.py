@@ -2,7 +2,7 @@ import pandas as pd
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-def split_features(dataset, columns):
+def split_features(columns):
     feature_columns = []
 
     for feature in columns:
@@ -13,90 +13,98 @@ def split_features(dataset, columns):
 
 def split_train_test(split_percentage, dataset, label):
     X_train = dataset.sample(frac=split_percentage, random_state=0)
-    y_train = X_train[label]
+    y_train = X_train.pop(label)
     X_test = dataset.drop(X_train.index)
-    y_test = X_test[label]
+    y_test = X_test.pop(label)
 
     return X_train, X_test, y_train, y_test
 
 
 def make_input_function(data_df, label_df, training=True, batch_size=256):
-    ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))
+    dataset = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))
 
     if training:
-        ds = ds.shuffle(1000).repeat()
+        dataset = dataset.shuffle(1000).repeat()
 
-    return ds.batch(batch_size)
-
-cc_dataset = pd.read_csv("cc_dataset.csv")
-CC_DATASET_COLS = ['hasColonCancer', 'hadPreviousCancer', 'hadPreviousColonCancer', 'hasFamilyHistory',
-                     'hadRadiationTherapy', 'isOldAge', 'hasIBD', 'hasObesity', 'isSmoker', 'isDrinker',
-                     'exercisesRegularly', 'hasHighFatDiet']
-
-hd_dataset = pd.read_csv("hd_dataset.csv")
-HD_DATASET_COLS = ['HeartDisease', 'BMI', 'PhysicalHealth', 'MentalHealth', 'SleepTime', 'Smoking', 'AlcoholDrinking', 'Stroke', 'DiffWalking', 'Sex', 'AgeCategory',
-                     'Race', 'Diabetic', 'PhysicalActivity', 'GenHealth', 'Asthma', 'KidneyDisease', 'SkinCancer']
-
-lc_dataset = pd.read_csv("lc_dataset.csv")
-LC_DATASET_COLS = ['Level', 'Age', 'Gender', 'AirPollution', 'AlcoholUse', 'DustAllergy', 'OccupationalHazards',
-                     'GeneticRisk', 'ChronicLungDisease', 'BalancedDiet', 'Obesity', 'Smoking', 'PassiveSmoker',
-                     'ChestPain', 'CoughingofBlood', 'Fatigue', 'WeightLoss', 'ShortnessofBreath', 'Wheezing',
-                     'SwallowingDifficulty', 'ClubbingofFingerNails', 'FrequentCold', 'DryCough', 'Snoring']
+    return dataset.batch(batch_size)
 
 
-# Colon Cancer Dataset
-cc_features = split_features(cc_dataset, CC_DATASET_COLS)
-cc_labels = cc_dataset['hasColonCancer']
+def predict(features):
+    def predict_input_function(features, batch_size=256):
+        return tf.data.Dataset.from_tensor_slices(dict(features)).batch(batch_size)
 
-cc_X_train, cc_X_test, cc_y_train, cc_y_test = split_train_test(0.5, cc_dataset, 'hasColonCancer')
+    patient_to_predict = {}
+    for feature in features:
+        value = input("Introduce value for " + feature + ": ")
+        patient_to_predict[feature] = [float(value)]
 
-cc_classifier = tf.estimator.DNNClassifier(
-    feature_columns=cc_features,
-    hidden_units=[30,10],
-    n_classes=2
-)
+    predictions = cc_classifier.predict(input_fn=lambda: predict_input_function(patient_to_predict))
 
-cc_classifier.train(input_fn=lambda: make_input_function(cc_X_train, cc_y_train), steps=10000)
+    for prediction in predictions:
+        outcome = prediction['class_ids'][0]
+        probability = prediction['probabilities'][outcome]
 
-cc_eval_result = cc_classifier.evaluate(input_fn=lambda: make_input_function(cc_X_train, cc_y_train, training=False))
+        return outcome, probability
 
-print('\nCC Test set accuracy: {accuracy:0.3f}\n'.format(**cc_eval_result))
+def make_model(dataset, dataset_features, label, split_percentage=0.8, n_classes=2):
+    features = split_features(dataset_features)
 
+    X_train, X_test, y_train, y_test = split_train_test(split_percentage, dataset, label)
 
-# Heart Disease Dataset
-hd_features = split_features(hd_dataset, HD_DATASET_COLS)
-hd_labels = hd_dataset['HeartDisease']
+    classifier = tf.estimator.DNNClassifier(
+        feature_columns=features,
+        hidden_units=[30, 10],
+        n_classes=n_classes
+    )
 
-hd_X_train, hd_X_test, hd_y_train, hd_y_test = split_train_test(0.8, hd_dataset, 'HeartDisease')
+    classifier.train(input_fn=lambda: make_input_function(X_train, y_train), steps=10000)
+    evaluation_result = classifier.evaluate(input_fn=lambda: make_input_function(X_train, y_train, training=False))
 
-hd_classifier = tf.estimator.DNNClassifier(
-    feature_columns=hd_features,
-    hidden_units=[30,10],
-    n_classes=2
-)
-
-hd_classifier.train(input_fn=lambda: make_input_function(hd_X_train, hd_y_train), steps=10000)
-
-hd_eval_result = hd_classifier.evaluate(input_fn=lambda: make_input_function(hd_X_train, hd_y_train, training=False))
-
-print('\nHD Test set accuracy: {accuracy:0.3f}\n'.format(**hd_eval_result))
+    return classifier, evaluation_result
 
 
-# Liver Cancer Dataset
+if __name__ == '__main__':
+    cc_dataset = pd.read_csv("cc_dataset.csv")
+    CC_DATASET_COLS = ['hasColonCancer', 'hadPreviousCancer', 'hadPreviousColonCancer', 'hasFamilyHistory',
+                         'hadRadiationTherapy', 'isOldAge', 'hasIBD', 'hasObesity', 'isSmoker', 'isDrinker',
+                         'exercisesRegularly', 'hasHighFatDiet']
+    CC_FEATURES = list(CC_DATASET_COLS)
+    CC_FEATURES.remove('hasColonCancer')
 
-lc_features = split_features(lc_dataset, LC_DATASET_COLS)
-lc_labels = lc_dataset['Level']
+    hd_dataset = pd.read_csv("hd_dataset.csv")
+    HD_DATASET_COLS = ['HeartDisease', 'BMI', 'PhysicalHealth', 'MentalHealth', 'SleepTime', 'Smoking', 'AlcoholDrinking', 'Stroke', 'DiffWalking', 'Sex', 'AgeCategory',
+                         'Race', 'Diabetic', 'PhysicalActivity', 'GenHealth', 'Asthma', 'KidneyDisease', 'SkinCancer']
+    HD_FEATURES = list(HD_DATASET_COLS)
+    HD_FEATURES.remove('HeartDisease')
 
-lc_X_train, lc_X_test, lc_y_train, lc_y_test = split_train_test(0.8, lc_dataset, 'Level')
+    lc_dataset = pd.read_csv("lc_dataset.csv")
+    LC_DATASET_COLS = ['Level', 'Age', 'Gender', 'AirPollution', 'AlcoholUse', 'DustAllergy', 'OccupationalHazards',
+                         'GeneticRisk', 'ChronicLungDisease', 'BalancedDiet', 'Obesity', 'Smoking', 'PassiveSmoker',
+                         'ChestPain', 'CoughingofBlood', 'Fatigue', 'WeightLoss', 'ShortnessofBreath', 'Wheezing',
+                         'SwallowingDifficulty', 'ClubbingofFingerNails', 'FrequentCold', 'DryCough', 'Snoring']
+    LC_FEATURES = list(LC_DATASET_COLS)
+    LC_FEATURES.remove('Level')
 
-lc_classifier = tf.estimator.DNNClassifier(
-    feature_columns=lc_features,
-    hidden_units=[30,10],
-    n_classes=3
-)
+    # Colon Cancer Dataset
+    cc_classifier, cc_evaluation_result= make_model(cc_dataset, CC_FEATURES, 'hasColonCancer')
+    print('\nCC test set accuracy: {accuracy:0.3f}\n'.format(**cc_evaluation_result))
 
-lc_classifier.train(input_fn=lambda: make_input_function(lc_X_train, lc_y_train), steps=10000)
+    # Heart Disease Dataset
+    hd_classifier, hd_evaluation_result = make_model(hd_dataset, HD_FEATURES, 'HeartDisease')
+    print('\nHD test set accuracy: {accuracy:0.3f}\n'.format(**hd_evaluation_result))
 
-lc_eval_result = lc_classifier.evaluate(input_fn=lambda: make_input_function(lc_X_train, lc_y_train, training=False))
+    # Liver Cancer Dataset
+    lc_classifier, lc_evaluation_result = make_model(lc_dataset, LC_FEATURES, 'Level', n_classes=3)
+    print('\nLC test set accuracy: {accuracy:0.3f}\n'.format(**lc_evaluation_result))
 
-print('\nLC Test set accuracy: {accuracy:0.3f}\n'.format(**lc_eval_result))
+    # Predict CC
+    cc_outcome, cc_probability = predict(CC_FEATURES)
+    print(f'Model predicts: "{cc_outcome}" ({cc_probability * 100:.1f}%)')
+
+    # Predict HD
+    hd_outcome, hd_probability = predict(HD_FEATURES)
+    print(f'Model predicts: "{hd_outcome}" ({hd_probability * 100:.1f}%)')
+
+    # Predict LC
+    lc_outcome, lc_probability = predict(LC_FEATURES)
+    print(f'Model predicts: "{lc_outcome}" ({lc_probability * 100:.1f}%)')
