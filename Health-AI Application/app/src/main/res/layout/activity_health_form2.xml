@@ -6,19 +6,220 @@
     android:layout_height="match_parent"
     tools:context=".formActivity.HealthFormActivity1">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I frequently consume alcohol"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I am often exposed to air pollution"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I frequently smoke"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="Im at risk of occupational hazards"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I have a balanced diet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I suffer from obesity"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I'm frequently exposed to passive smoke"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I suffer from dust allegies"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I have a family history of lung cancer"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="236dp"
+                android:layout_height="52dp"
+                android:text="I suffer from chronic lung disease"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormConsumeAlcohol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormAirPolution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormFrequentlySmoke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-7" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormOccupationalHazards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormBalancedDiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-7" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormObesity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormPassiveSmoke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-7" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormDustAllergies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-7" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormGeneticRisk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="125dp"
+                android:layout_height="51dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiFormChronicLungDisease"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1-8" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </LinearLayout>
+
     <Button
         android:id="@+id/button13"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="14dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button10"
@@ -33,53 +234,28 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/acme"
         android:text="HealthAI Form"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button10"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="324dp"
-        android:layout_height="103dp"
-        android:text="Have you ever been diagnosed with high blood pressure?"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="7dp"
+        android:text="Please describle the severity of each of the following in your life on the appropriate scale below"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="110dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="62dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.006">
-
-        <RadioButton
-            android:id="@+id/form_yes_rdb3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Yes" />
-
-        <RadioButton
-            android:id="@+id/form_no_rdb3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="No" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,6 @@ public class insuranceDetailsActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     FirebaseDatabase db;
-
     Button buttonSave;
 
     @Override
@@ -72,17 +71,21 @@ public class insuranceDetailsActivity extends AppCompatActivity {
             databaseReference = db.getReference("Users").child(email);
 
             databaseReference.child("Insurance_Details").setValue(insuranceDetails).addOnCompleteListener(task -> {
-                editTextInsuranceCompany.setText("");
-                editTextInsuranceYear.setText("");
-                editTextPolicyNumber.setText("");
-                editTextTypeOfInsurance.setText("");
-                editTextSubscriberID.setText("");
-                editTextGroupNumber.setText("");
-                editTextInsurancePhone.setText("");
-                editTextPolicyHolderName.setText("");
+                if (task.isSuccessful()) {
+                    editTextInsuranceCompany.setText("");
+                    editTextInsuranceYear.setText("");
+                    editTextPolicyNumber.setText("");
+                    editTextTypeOfInsurance.setText("");
+                    editTextSubscriberID.setText("");
+                    editTextGroupNumber.setText("");
+                    editTextInsurancePhone.setText("");
 
-                Toast.makeText(insuranceDetailsActivity.this, "Successfully Updated", Toast.LENGTH_LONG).show();
-            });
+                    Toast.makeText(insuranceDetailsActivity.this, "Successfully Updated", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(insuranceDetailsActivity.this, "Failed to update insurance details", Toast.LENGTH_LONG).show();
+                    Log.e("Firebase", "Error updating insurance details", task.getException());
+                }
+                });
         });
     }
 
@@ -101,10 +104,6 @@ public class insuranceDetailsActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (!dataSnapshot.hasChild("gp")) {
                             buttonSave.setEnabled(true);
-                            buttonSave.setOnClickListener(v -> {
-                                Intent send = new Intent(insuranceDetailsActivity.this, insuranceDetailsActivity2.class);
-                                startActivity(send);
-                            });
                         } else {
                             // If GP is assigned, show a message
                             Toast.makeText(insuranceDetailsActivity.this, "Insurance is already added", Toast.LENGTH_SHORT).show();
