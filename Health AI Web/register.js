@@ -1,6 +1,6 @@
-import { firestore, auth } from './database_connection.js';
+import { database, auth } from './database_connection.js';
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
 function validateForm(fullname, email, password) {
     if (!fullname || !email || !password) {
@@ -27,8 +27,8 @@ async function registerUser(fullname, email, password) {
         const professionalCredential = await createUserWithEmailAndPassword(auth, email, password);
         const professional = professionalCredential.user;
 
-        const professionalDocRef = doc(firestore, 'professionals', professional.uid);
-        await setDoc(professionalDocRef, {
+        const professionalRef = ref(database, 'Professionals/' + professional.uid);
+        await set(professionalRef, {
             fullname: fullname,
             email: email
         });

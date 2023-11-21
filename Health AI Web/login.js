@@ -1,6 +1,6 @@
-import { auth, firestore } from './database_connection.js'; // Import auth and firestore
-import { signInWithEmailAndPassword, getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { auth, database } from './database_connection.js'; // Import auth and database
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+import { ref, get, update } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
 function validateLoginForm(email, password) {
     if (!email || !password) {
@@ -33,15 +33,15 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             .then((professionalCredential) => {
                 const professional = professionalCredential.user;
 
-                // Create a reference to the specific document in the "professionals" collection
-                const professionalDocRef = doc(firestore, 'professionals', professional.uid);
+                // Create a reference to the specific data path in the Realtime Database
+                const professionalRef = ref(database, 'Professionals/' + professional.uid);
 
-                return getDoc(professionalDocRef)
-                    .then((docSnapshot) => {
-                        if (docSnapshot.exists()) {
+                return get(professionalRef)
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
                             const lastLoginTime = new Date().toISOString();
-                            // Update the last login time in the Firestore document
-                            return updateDoc(professionalDocRef, { lastLogin: lastLoginTime });
+                            // Update the last login time in the Realtime Database
+                            return update(professionalRef, { lastLogin: lastLoginTime });
                         } else {
                             alert('Professional not found in the database');
                         }
