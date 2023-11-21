@@ -1,14 +1,15 @@
-import { firestore, auth } from './database_connection.js';
-import { doc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { auth, database } from './database_connection.js';
+import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
+
         // Fetch and display the professional's name
-        const professionalRef = doc(firestore, 'professionals', user.uid);
-        onSnapshot(professionalRef, (doc) => {
-            const professionalData = doc.data();
+        const professionalRef = ref(database, 'Professionals/' + user.uid);
+        onValue(professionalRef, (snapshot) => {
+            const professionalData = snapshot.val();
             if (professionalData && professionalData.fullname) {
                 document.getElementById('professional-name').innerText = `Welcome Dr. ${professionalData.fullname}`;
             } else {
@@ -18,28 +19,34 @@ onAuthStateChanged(auth, async (user) => {
         });
 
         // Listen for changes to the user's patient list
-        const patientsRef = collection(firestore, 'patients');
-        onSnapshot(patientsRef, (querySnapshot) => {
+        const patientsRef = ref(database, 'Users');
+        onValue(patientsRef, (snapshot) => {
             const patientListElement = document.getElementById('patient-list');
             patientListElement.innerHTML = '';
 
-            if (!querySnapshot.empty) {
-                querySnapshot.forEach((doc) => {
-                    const patient = doc.data();
+            if (snapshot.exists()) {
+                snapshot.forEach((childSnapshot) => {
+                    const email = childSnapshot.key;
+                    const patientDetails = childSnapshot.val();
+
                     const listItem = document.createElement('li');
 
                     const nameElement = document.createElement('div');
-                    nameElement.innerText = `Name: ${patient.Name}`;
+                    nameElement.innerText = `Name: ${patientDetails.name}`;
 
                     const ageElement = document.createElement('div');
-                    ageElement.innerText = `Age: ${patient.Age}`;
+                    ageElement.innerText = `Age: ${patientDetails.age}`;
 
-                    const heightElement = document.createElement('div');
-                    heightElement.innerText = `Height: ${patient.Height}`;
+                    const sexElement = document.createElement('div');
+                    sexElement.innerText = `Sex: ${patientDetails.sex}`;
+
+                    const mobileElement = document.createElement('div');
+                    mobileElement.innerText = `Mobile: ${patientDetails.mobile}`;
 
                     listItem.appendChild(nameElement);
                     listItem.appendChild(ageElement);
-                    listItem.appendChild(heightElement);
+                    listItem.appendChild(sexElement);
+                    listItem.appendChild(mobileElement);
 
                     patientListElement.appendChild(listItem);
                 });
