@@ -46,6 +46,7 @@ def predict(features):
 
         return outcome, probability
 
+
 def make_model(dataset, dataset_features, label, split_percentage=0.8, n_classes=2):
     features = split_features(dataset_features)
 

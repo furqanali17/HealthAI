@@ -26,7 +26,7 @@ if __name__ == '__main__':
     hd_dataset = replace_column(hd_dataset, 'GenHealth', [['Poor', 0], ['Fair', 1], ['Good', 2],
                                                           ['Very good', 3], ['Excellent', 4]])
 
-    hd_dataset.to_csv("hd_dataset.csv")
+    hd_dataset.to_csv("hd_dataset.csv", index=False)
 
     # Lung Cancer
     lc_dataset = pd.read_csv("lc_dataset.csv")
@@ -37,4 +37,4 @@ if __name__ == '__main__':
 
     lc_dataset = replace_column(lc_dataset, 'Level', [['Low', 0], ['Medium', 1], ['High', 2]])
 
-    lc_dataset.to_csv("lc_dataset.csv")
+    lc_dataset.to_csv("lc_dataset.csv", index=False)
