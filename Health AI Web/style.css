@@ -70,8 +70,8 @@ header {
 
 main {
     /*change style with this */
-    display:list-item;
-    justify-content:start;
+    display: list-item;
+    justify-content: start;
     align-items: center;
     height: calc(100vh - 90px);
 }
@@ -142,4 +142,9 @@ footer {
 
 .social-button:hover {
     background-color: #2d4373;
+}
+
+.warning-message{
+    color: red;
+    margin-left: 10px;
 }
