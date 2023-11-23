@@ -4,7 +4,6 @@ public class InsuranceDetails {
     String insuranceCompany, insuranceYear, policyNumber, typeOfInsurance, subscriberID, groupNumber, insurancePhone;
 
     public InsuranceDetails() {
-        // Default constructor required for calls to DataSnapshot.getValue(InsuranceDetails.class)
     }
 
     public InsuranceDetails(String insuranceCompany, String insuranceYear, String policyNumber, String typeOfInsurance,

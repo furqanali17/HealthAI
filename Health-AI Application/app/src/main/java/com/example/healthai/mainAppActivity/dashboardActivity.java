@@ -13,6 +13,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.healthai.R;
+import com.example.healthai.docBotActivity.docBotActivity;
 import com.example.healthai.fragments.FitnessFragment;
 import com.example.healthai.fragments.GpFragment;
 import com.example.healthai.fragments.UserFragment;
@@ -29,6 +30,7 @@ public class dashboardActivity extends AppCompatActivity implements View.OnClick
     TextView userDetail;
     FirebaseAuth auth;
     FirebaseUser user;
+    FloatingActionButton docbot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class dashboardActivity extends AppCompatActivity implements View.OnClick
         fitnessCard = findViewById(R.id.fitness);
         gpCard = findViewById(R.id.gp);
         userCard = findViewById(R.id.user);
+        docbot = findViewById(R.id.fab_docbot);
 
         predictionCard.setOnClickListener(this);
         fitnessCard.setOnClickListener(this);
@@ -62,6 +65,12 @@ public class dashboardActivity extends AppCompatActivity implements View.OnClick
             Intent intent = new Intent(getApplicationContext(), login.class);
             startActivity(intent);
             finish();
+        });
+
+        docbot.setOnClickListener( v -> {
+            Intent intent = new Intent(getApplicationContext(), docBotActivity.class);
+            startActivity(intent);
+
         });
     }
 

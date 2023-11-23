@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "259705293143",
+    "firebase_url": "https://dfos-healthai-default-rtdb.firebaseio.com",
+    "project_id": "dfos-healthai",
+    "storage_bucket": "dfos-healthai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259705293143:android:6cbe335177d8c12692d612",
+        "android_client_info": {
+          "package_name": "com.company.healthai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEFJpam4D1GhVjPu298nMi80GPsOd4Flc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259705293143:android:59b87b6c38c0f90c92d612",
+        "android_client_info": {
+          "package_name": "com.example.healthai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEFJpam4D1GhVjPu298nMi80GPsOd4Flc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

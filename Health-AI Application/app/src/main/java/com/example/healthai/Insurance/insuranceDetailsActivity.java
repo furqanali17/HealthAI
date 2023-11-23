@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class insuranceDetailsActivity extends AppCompatActivity {
     EditText editTextInsuranceCompany, editTextInsuranceYear, editTextPolicyNumber,
             editTextTypeOfInsurance, editTextSubscriberID, editTextGroupNumber,
-            editTextInsurancePhone, editTextPolicyHolderName;
+            editTextInsurancePhone;
 
     String InsuranceCompany, InsuranceYear, PolicyNumber, TypeOfInsurance, SubscriberID, GroupNumber,
     InsurancePhone;
@@ -99,14 +99,14 @@ public class insuranceDetailsActivity extends AppCompatActivity {
                 String userKey = email.replace('.', ',');
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey);
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("Insurance_Details").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.hasChild("gp")) {
+                        if (!dataSnapshot.exists()) {
                             buttonSave.setEnabled(true);
                         } else {
                             // If GP is assigned, show a message
-                            Toast.makeText(insuranceDetailsActivity.this, "Insurance is already added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(insuranceDetailsActivity.this, "Insurance details are already added", Toast.LENGTH_SHORT).show();
                             Intent send = new Intent(insuranceDetailsActivity.this, insuranceDetailsActivity2.class);
                             startActivity(send);
                         }

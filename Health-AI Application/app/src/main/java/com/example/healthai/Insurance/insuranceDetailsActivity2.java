@@ -2,6 +2,7 @@ package com.example.healthai.Insurance;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthai.GP.gp_details_activity3;
+import com.example.healthai.Profile.UserDetails;
 import com.example.healthai.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,21 +26,31 @@ import com.google.firebase.database.ValueEventListener;
 public class insuranceDetailsActivity2 extends AppCompatActivity {
 
     Button callInsurance_Btn;
-    String InsuranceCompany, InsuranceYear, PolicyNumber, TypeOfInsurance, SubscriberID, GroupNumber, InsurancePhone;
-    TextView insurance_info_textView;
+    String InsurancePhone;
+    TextView insuranceCompanyTextView, insuranceYearTextView, policyNumberTextView, typeOfInsuranceTextView,
+            subscriberIDTextView, groupNumberTextView, insurancePhoneTextView;
+    CardView insurance_cardView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insurance_details2);
 
-        insurance_info_textView = findViewById(R.id.insurance_info_textView);
+        insurance_cardView = findViewById(R.id.insurance_cardView);
+        insuranceCompanyTextView = findViewById(R.id.insuranceCompanyTextView);
+        insuranceYearTextView = findViewById(R.id.insuranceYearTextView);
+        policyNumberTextView = findViewById(R.id.policyNumberTextView);
+        typeOfInsuranceTextView = findViewById(R.id.typeOfInsuranceTextView);
+        subscriberIDTextView = findViewById(R.id.subscriberIDTextView);
+        groupNumberTextView = findViewById(R.id.groupNumberTextView);
+        insurancePhoneTextView = findViewById(R.id.insurancePhoneTextView);
 
         getInsuranceInfo();
         callInsurance_Btn = findViewById(R.id.callInsurance_Btn);
         callInsurance_Btn.setOnClickListener(v -> action_dial());
     }
 
-    private void getInsuranceInfo(){
+    // Inside getInsuranceInfo() method
+    private void getInsuranceInfo() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
@@ -47,43 +59,37 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
             if (email != null) {
                 String userKey = email.replace('.', ',');
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey).child("Insurance_Details");
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child("Insurance_Details").exists()) {
-                            InsuranceCompany = dataSnapshot.child("Insurance_Details").child("insuranceCompany").getValue(String.class);
-                            InsuranceYear = dataSnapshot.child("Insurance_Details").child("insuranceYear").getValue(String.class);
-                            PolicyNumber = dataSnapshot.child("Insurance_Details").child("policyNumber").getValue(String.class);
-                            TypeOfInsurance = dataSnapshot.child("Insurance_Details").child("typeOfInsurance").getValue(String.class);
-                            SubscriberID = dataSnapshot.child("Insurance_Details").child("subscriberID").getValue(String.class);
-                            GroupNumber = dataSnapshot.child("Insurance_Details").child("groupNumber").getValue(String.class);
-                            InsurancePhone = dataSnapshot.child("Insurance_Details").child("insurancePhone").getValue(String.class);
+                        InsuranceDetails insuranceDetails = dataSnapshot.getValue(InsuranceDetails.class);
+                        if (insuranceDetails != null) {
+                            insuranceCompanyTextView.setText(insuranceDetails.getInsuranceCompany());
+                            insuranceYearTextView.setText(insuranceDetails.getInsuranceYear());
+                            policyNumberTextView.setText(insuranceDetails.getPolicyNumber());
+                            typeOfInsuranceTextView.setText(insuranceDetails.getTypeOfInsurance());
+                            subscriberIDTextView.setText(insuranceDetails.getSubscriberID());
+                            groupNumberTextView.setText(insuranceDetails.getGroupNumber());
+                            insurancePhoneTextView.setText(insuranceDetails.getInsurancePhone());
 
-                            if (InsuranceCompany != null && InsuranceYear != null && PolicyNumber != null && TypeOfInsurance != null &&
-                                    SubscriberID != null && GroupNumber != null && InsurancePhone != null) {
-                                String InsuranceInfo = "Insurance Company:  " + InsuranceCompany + "\n" +
-                                        "Insurance Year:  " + InsuranceYear + "\n" +
-                                        "Policy Number:  " + PolicyNumber + "\n" +
-                                        "Type Of Insurance:  " + TypeOfInsurance + "\n" +
-                                        "Subscriber ID:  " + SubscriberID + "\n" +
-                                        "Group Number:  " + GroupNumber + "\n" +
-                                        "Insurance Phone:  " + InsurancePhone;
-                                insurance_info_textView.setText(InsuranceInfo);
-                            } else {
-                                Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
-                            }
+                            // Update InsurancePhone variable
+                            InsurancePhone = insuranceDetails.getInsurancePhone();
+                        } else {
+                            Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
                         }
                     }
 
+                    @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         // Handle errors here
-                        Toast.makeText(insuranceDetailsActivity2.this, "Error fetching GP mobile number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         }
     }
+
 
     public void action_dial(){
         if (InsurancePhone != null && !InsurancePhone.isEmpty()) {

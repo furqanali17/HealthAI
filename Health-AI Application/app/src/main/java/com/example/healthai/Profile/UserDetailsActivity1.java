@@ -3,7 +3,9 @@ package com.example.healthai.Profile;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserDetailsActivity1 extends AppCompatActivity {
     FloatingActionButton editFab;
-    TextView userDetailsTextView ;
     FirebaseAuth auth;
+    CardView user_cardView;
+    TextView nameTextView, ageTextView, sexTextView, mobileTextView;
     FirebaseUser user;
     DatabaseReference userReference;
     @Override
@@ -31,7 +34,11 @@ public class UserDetailsActivity1 extends AppCompatActivity {
         setContentView(R.layout.activity_user_details1);
 
         editFab = findViewById(R.id.editFab);
-        userDetailsTextView  = findViewById(R.id.userDetailsTextView);
+        user_cardView = findViewById(R.id.user_cardView);
+        nameTextView = findViewById(R.id.nameTextView);
+        ageTextView = findViewById(R.id.ageTextView);
+        sexTextView = findViewById(R.id.sexTextView);
+        mobileTextView = findViewById(R.id.mobileTextView);
 
         editFab.setOnClickListener(v -> {
             Intent send = new Intent(UserDetailsActivity1.this, UserDetailsActivity2.class);
@@ -41,21 +48,22 @@ public class UserDetailsActivity1 extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
+        assert user != null;
         String email = user.getEmail().replace('.', ',');
 
         userReference = FirebaseDatabase.getInstance().getReference("Users").child(email);
 
         userReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get the UserDetails object and use the values to update the TextView
                 UserDetails userDetails = dataSnapshot.getValue(UserDetails.class);
                 if (userDetails != null) {
-                    String userDetailsText = "Name: " + userDetails.getName() + "\n" +
-                            "Age: " + userDetails.getAge() + "\n" +
-                            "Sex: " + userDetails.getSex() + "\n" +
-                            "Mobile: " + userDetails.getMobile();
-                    userDetailsTextView.setText(userDetailsText);
+                    nameTextView.setText(userDetails.getName());
+                    ageTextView.setText(String.valueOf(userDetails.getAge()));
+                    sexTextView.setText(userDetails.getSex());
+                    mobileTextView.setText(userDetails.getMobile());
                 }
             }
             public void onCancelled(DatabaseError databaseError) {
