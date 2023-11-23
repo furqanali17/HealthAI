@@ -30,7 +30,11 @@ async function registerUser(fullname, email, password) {
         const professionalRef = ref(database, 'Professionals/' + professional.uid);
         await set(professionalRef, {
             fullname: fullname,
-            email: email
+            email: email,
+            mobile: '', // Empty mobile field
+            specialties: '', // Empty specialties field
+            academicTitle: '', // Empty academic title field
+            sex: ''
         });
 
         alert('User created and data saved!');
