@@ -31,9 +31,9 @@ async function registerUser(fullname, email, password) {
         await set(professionalRef, {
             fullname: fullname,
             email: email,
-            mobile: '', // Empty mobile field
-            specialties: '', // Empty specialties field
-            academicTitle: '', // Empty academic title field
+            mobile: '',
+            specialties: '',
+            academicTitle: '',
             sex: ''
         });
 

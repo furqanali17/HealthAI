@@ -144,7 +144,46 @@ footer {
     background-color: #2d4373;
 }
 
-.warning-message{
+.warning-message {
     color: red;
     margin-left: 10px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* align items to the start of the container */
+    width: 100%;
+    /* use the full width of the main element */
+    padding: 10px;
+    /* Add padding inside the container */
+    border: 1px solid #ccc;
+    /* Example: 1px solid black border */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+
+}
+
+.doctor-details,
+.contact-details {
+    width: 45%;
+    padding: 10px;
+    border: none;
+}
+
+.doctor-details h2,
+.contact-details h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+}
+
+.doctor-details div,
+.contact-details div {
+    margin-bottom: 15px;
+}
+
+.admin-theme nav {
+    background-color: red;
 }

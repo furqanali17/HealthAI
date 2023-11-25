@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="admin-theme">
     <nav>
         <ul>
             <li><a href="#">Dashboard</a></li>
@@ -17,7 +17,7 @@
         </ul>
     </nav>
 
-    <h1 id="admin-name">Welcome Admin "Name"</h1>
+    <h1 id="admin-name">Welcome Admin Name</h1>
 
     <main>
         <div class="admin-options">
@@ -27,22 +27,14 @@
                 <li><a href="#" id="manage-database">Manage Database/Datasets</a></li>
             </ul>
         </div>
-
-        <section class="manage-professionals">
-            <h2>Manage Professionals</h2>
-        </section>
-
-        <section class="manage-database">
-            <h2>Manage Database/Datasets</h2>
-        </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <script src="database_connection.js"></script>
-    <script src="logout.js"></script>
-    <script src="admin.js"></script>
+    <script type="module" src="database_connection.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="admin.js"></script>
 </body>
 
 </html>
