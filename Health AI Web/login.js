@@ -18,7 +18,6 @@ function validateLoginForm(email, password) {
         alert("Password must be at least 8 characters long");
         return false;
     }
-
     return true;
 }
 
@@ -30,26 +29,32 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
     if (validateLoginForm(email, password)) {
         signInWithEmailAndPassword(auth, email, password)
-            .then((professionalCredential) => {
-                const professional = professionalCredential.user;
+            .then((userCredential) => {
+                const user = userCredential.user;
 
-                // Create a reference to the specific data path in the Realtime Database
-                const professionalRef = ref(database, 'Professionals/' + professional.uid);
+                // First, check if the user is an admin
+                const adminRef = ref(database, 'Admins/' + user.uid);
+                return get(adminRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        // User is an admin
+                        window.location.href = 'admin.html';
+                    } else {
+                        // Not an admin, check if they are a professional
+                        const professionalRef = ref(database, 'Professionals/' + user.uid);
+                        return get(professionalRef).then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const lastLoginTime = new Date().toISOString();
+                                // Update the last login time in the Realtime Database
+                                update(professionalRef, { lastLogin: lastLoginTime });
 
-                return get(professionalRef)
-                    .then((snapshot) => {
-                        if (snapshot.exists()) {
-                            const lastLoginTime = new Date().toISOString();
-                            // Update the last login time in the Realtime Database
-                            return update(professionalRef, { lastLogin: lastLoginTime });
-                        } else {
-                            alert('Professional not found in the database');
-                        }
-                    });
-            })
-            .then(() => {
-                // Redirect to the dashboard page
-                window.location.href = 'dashboard.html';
+                                // Redirect to the professional's dashboard
+                                window.location.href = 'dashboard.html';
+                            } else {
+                                alert('User not found in the database');
+                            }
+                        });
+                    }
+                });
             })
             .catch((error) => {
                 const errorMessage = error.message;

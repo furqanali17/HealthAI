@@ -112,7 +112,7 @@ function updateProfileField(uid, field, value) {
         'doctor-mobile': 'mobile',
         'doctor-specialties': 'specialties',
         'doctor-title': 'academicTitle',
-        'sex': 'sex'  // Mapping for sex field
+        'sex': 'sex'
     };
 
     if (field === 'sex') {

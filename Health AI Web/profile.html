@@ -19,51 +19,57 @@
 
     <h1 id="professional-name">Welcome Dr. Name</h1>
     <main>
-        <section class="doctor-details">
-            <h2>Doctor Details</h2>
-            <div>
-                <h3>Doctor's Name</h3>
-                <p id="doctor-name">[Doctor's Name Here]</p>
-            </div>
-
-            <div>
-                <h3>Academic Title</h3>
-                <input type="text" id="doctor-title" placeholder="Enter Title" disabled>
-                <button onclick="toggleEditSave('doctor-title')">Edit</button>
-                <span id="doctor-title-warning" class="warning-message"></span>
-            </div>
-            <div>
-                <h3>Specialties</h3>
-                <textarea id="doctor-specialties" placeholder="Enter Specialties" disabled></textarea>
-                <button onclick="toggleEditSave('doctor-specialties')">Edit</button>
-                <span id="doctor-specialties-warning" class="warning-message"></span>
-            </div>
-            <div>
-                <h3>Sex</h3>
-                <p id="doctor-sex-display" style="display: none;">[Sex Here]</p>
-                <div id="sex-selection" style="display: none;">
-                    <label>
-                        <input type="radio" name="sex" id="sex-male" value="Male" onchange="updateSex('Male')"> Male
-                    </label>
-                    <label>
-                        <input type="radio" name="sex" id="sex-female" value="Female" onchange="updateSex('Female')">
-                        Female
-                    </label>
+        <div class="profile-container">
+            <section class="doctor-details">
+                <h2>Doctor Details</h2>
+                <div>
+                    <h3>Doctor's Name</h3>
+                    <p id="doctor-name">[Doctor's Name Here]</p>
                 </div>
-                <span id="sex-warning" class="warning-message"></span>
-            </div>
-            <h2>Contact Details</h2>
-            <div>
-                <h3>Email</h3>
-                <p id="doctor-email">[Email Here]</p>
-            </div>
-            <div>
-                <h3>Mobile Number</h3>
-                <input type="text" id="doctor-mobile" placeholder="Enter Mobile Number" disabled>
-                <button onclick="toggleEditSave('doctor-mobile')">Edit</button>
-                <span id="doctor-mobile-warning" class="warning-message"></span>
-            </div>
-        </section>
+
+                <div>
+                    <h3>Academic Title</h3>
+                    <input type="text" id="doctor-title" placeholder="Enter Title" disabled>
+                    <button onclick="toggleEditSave('doctor-title')">Edit</button>
+                    <span id="doctor-title-warning" class="warning-message"></span>
+                </div>
+                <div>
+                    <h3>Specialties</h3>
+                    <textarea id="doctor-specialties" placeholder="Enter Specialties" disabled></textarea>
+                    <button onclick="toggleEditSave('doctor-specialties')">Edit</button>
+                    <span id="doctor-specialties-warning" class="warning-message"></span>
+                </div>
+                <div>
+                    <h3>Sex</h3>
+                    <p id="doctor-sex-display" style="display: none;">[Sex Here]</p>
+                    <div id="sex-selection" style="display: none;">
+                        <label>
+                            <input type="radio" name="sex" id="sex-male" value="Male" onchange="updateSex('Male')"> Male
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" id="sex-female" value="Female"
+                                onchange="updateSex('Female')">
+                            Female
+                        </label>
+                    </div>
+                    <span id="sex-warning" class="warning-message"></span>
+                </div>
+            </section>
+            <section class="contact-details">
+                <h2>Contact Details</h2>
+                <div>
+                    <h3>Email</h3>
+                    <p id="doctor-email">[Email Here]</p>
+                </div>
+                <div>
+                    <h3>Mobile Number</h3>
+                    <input type="text" id="doctor-mobile" placeholder="Enter Mobile Number" disabled>
+                    <button onclick="toggleEditSave('doctor-mobile')">Edit</button>
+                    <span id="doctor-mobile-warning" class="warning-message"></span>
+                </div>
+            </section>
+        </div>
+
     </main>
 
     <footer>
