@@ -130,4 +130,3 @@ if __name__ == '__main__':
     cc_classifier = tf.saved_model.load(cc_path)
     hd_classifier = tf.saved_model.load(hd_path)
     lc_classifier = tf.saved_model.load(lc_path)
-
