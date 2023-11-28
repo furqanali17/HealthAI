@@ -1,4 +1,4 @@
-import { auth, database } from './database_connection.js'; // Import auth and database
+import { auth, database } from './database_connection.js';
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 import { ref, get, update } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 

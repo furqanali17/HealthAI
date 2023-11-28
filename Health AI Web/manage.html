@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Datasets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-theme">
+    <nav>
+        <ul>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="manage.html">Manage</a></li>
+            <li><a id="logout" style="cursor: pointer;">Logout</a></li>
+        </ul>
+    </nav>
+
+    <h1>Manage Data</h1>
+
+    <main class="manage-container">
+        <section class="current-dataset">
+            <h2>Current Dataset</h2>
+            <div id="dataset-display">
+]            </div>
+        </section>
+
+        <section class="data-options">
+            <h2>Data Operations</h2>
+            <button id="create-dataset" class="btn">Create New Dataset</button>
+            <button id="export-dataset" class="btn">Export Dataset</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Health AI</p>
+    </footer>
+    <script type="module" src="database_connection.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="manage.js"></script>
+</body>
+
+</html>
