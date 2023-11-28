@@ -13,13 +13,6 @@ body {
     background-color: #f0f0f0;
 }
 
-.dashboard-container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-top: 20px;
-}
-
 .doctor-details {
     flex-basis: 45%;
     padding: 20px;
@@ -33,6 +26,14 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.professional-list {
+    flex-basis: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 
 nav {
     background-color: #007BFF;
@@ -120,7 +121,10 @@ footer {
     text-align: center;
     background-color: #007BFF;
     color: #fff;
-    padding: 10px;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .social-login,
@@ -153,16 +157,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* align items to the start of the container */
     width: 100%;
-    /* use the full width of the main element */
     padding: 10px;
-    /* Add padding inside the container */
     border: 1px solid #ccc;
-    /* Example: 1px solid black border */
     box-sizing: border-box;
-    /* Include padding and border in the element's total width and height */
-
 }
 
 .doctor-details,
@@ -184,6 +182,37 @@ footer {
     margin-bottom: 15px;
 }
 
-.admin-theme nav {
+.admin-theme nav,
+.admin-theme button,
+.admin-theme footer {
     background-color: red;
+    color: white;
+}
+
+.admin-theme button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-theme button:hover {
+    background-color: darkred;
+}
+
+.admin-theme footer {
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.user-list-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
