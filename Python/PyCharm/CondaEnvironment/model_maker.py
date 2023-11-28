@@ -31,7 +31,7 @@ def make_input_function(data_df, label_df, training=True, batch_size=256):
     return dataset.batch(batch_size)
 
 
-def predict(features):
+def predict(features, classifier):
     def predict_input_function(features, batch_size=256):
         return tf.data.Dataset.from_tensor_slices(dict(features)).batch(batch_size)
 
@@ -40,7 +40,7 @@ def predict(features):
         value = input("Introduce value for " + feature + ": ")
         patient_to_predict[feature] = [float(value)]
 
-    predictions = cc_classifier.predict(input_fn=lambda: predict_input_function(patient_to_predict))
+    predictions = classifier.predict(input_fn=lambda: predict_input_function(patient_to_predict))
 
     for prediction in predictions:
         outcome = prediction['class_ids'][0]
@@ -104,15 +104,15 @@ if __name__ == '__main__':
     print('\nLC test set accuracy: {accuracy:0.3f}\n'.format(**lc_evaluation_result))
 
     # Predict CC
-    cc_outcome, cc_probability = predict(CC_FEATURES)
+    cc_outcome, cc_probability = predict(CC_FEATURES, cc_classifier)
     print(f'Model predicts: "{cc_outcome}" ({cc_probability * 100:.1f}%)')
 
     # Predict HD
-    hd_outcome, hd_probability = predict(HD_FEATURES)
+    hd_outcome, hd_probability = predict(HD_FEATURES, hd_classifier)
     print(f'Model predicts: "{hd_outcome}" ({hd_probability * 100:.1f}%)')
 
     # Predict LC
-    lc_outcome, lc_probability = predict(LC_FEATURES)
+    lc_outcome, lc_probability = predict(LC_FEATURES, lc_classifier)
     print(f'Model predicts: "{lc_outcome}" ({lc_probability * 100:.1f}%)')
 
     # Save Models
