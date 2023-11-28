@@ -51,6 +51,18 @@
             android:name=".formActivity.formCompleted"
             android:exported="false" />
         <activity
+            android:name=".docBotActivity.docBotActivity"
+            android:exported="false" />
+        <activity
+            android:name=".formActivity.HealthFormActivity6"
+            android:exported="false" />
+        <activity
+            android:name=".formActivity.HealthFormActivity5"
+            android:exported="false" />
+        <activity
+            android:name=".formActivity.HealthFormActivity4"
+            android:exported="false" />
+        <activity
             android:name=".formActivity.HealthFormActivity3"
             android:exported="false" />
         <activity

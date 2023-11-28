@@ -17,6 +17,8 @@ public class formCompleted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_completed);
 
+        Form userForm = getIntent().getParcelableExtra("form");
+
         Button send1 = findViewById(R.id.button11);
         send1.setOnClickListener(view -> {
             Intent send11 = new Intent(formCompleted.this, dashboardActivity.class);

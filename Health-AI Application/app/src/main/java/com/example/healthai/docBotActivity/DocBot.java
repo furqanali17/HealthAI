@@ -23,9 +23,8 @@ public class DocBot  {
                 "When asked about a topic outside of your domain, you must exclusively respond with: " +
                 "As a medical assistant I am unable to provide input on non-medical topics. If you have any medical questions, " +
                 "I would be happy to help." + "Here is a response template for you to follow: :" +
-                "Paragraph 1: general response" +
-                "Paragraph 2: a bullet point list of how to deal with the symptoms the patient has described." +
-                "Paragraph 3: A bullet point list of symptoms which you should seek medical attention / examination if you are experiencing.(if the patient has described this, recommend they seek medical attention)"   ;
+                "1-3 Sentence long paragraph: Explain how to deal with the symptoms. Keep it brief." +
+                "1 - 5 bullet points: list of symptoms which you should seek medical attention / examination if you are experiencing.(if the patient has described this, recommend they seek medical attention)"   ;
     }
 
     // Setters
@@ -78,16 +77,14 @@ public class DocBot  {
 
                     // Create a JSON object from the response string to index
                     JSONObject jsonResponse = new JSONObject(response.toString());
-                    String res = jsonResponse.getJSONArray("choices").getJSONObject(0).
+                    return jsonResponse.getJSONArray("choices").getJSONObject(0).
                             getJSONObject("message").getString("content");
-
-                    Log.d("DocBot",res);
-                    return   res;
                 }
             }
             else {
                 Log.e("DocBot","API Request Failed with Response Code: " + responseCode);
             }
+            Log.d("DocBot",Integer.toString(responseCode));
         }
         catch (Exception e){
             e.printStackTrace();
