@@ -1,3 +1,5 @@
+import os
+import shutil
 import pandas as pd
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
@@ -47,8 +49,8 @@ def predict(features):
         return outcome, probability
 
 
-def make_model(dataset, dataset_features, label, split_percentage=0.8, n_classes=2):
-    features = split_features(dataset_features)
+def make_model(dataset, features, label, split_percentage=0.8, n_classes=2):
+
 
     X_train, X_test, y_train, y_test = split_train_test(split_percentage, dataset, label)
 
@@ -87,15 +89,18 @@ if __name__ == '__main__':
     LC_FEATURES.remove('Level')
 
     # Colon Cancer Dataset
-    cc_classifier, cc_evaluation_result= make_model(cc_dataset, CC_FEATURES, 'hasColonCancer')
+    cc_ftr_cols = split_features(CC_FEATURES)
+    cc_classifier, cc_evaluation_result= make_model(cc_dataset, cc_ftr_cols, 'hasColonCancer')
     print('\nCC test set accuracy: {accuracy:0.3f}\n'.format(**cc_evaluation_result))
 
     # Heart Disease Dataset
-    hd_classifier, hd_evaluation_result = make_model(hd_dataset, HD_FEATURES, 'HeartDisease')
+    hd_ftr_cols = split_features(HD_FEATURES)
+    hd_classifier, hd_evaluation_result = make_model(hd_dataset, hd_ftr_cols, 'HeartDisease')
     print('\nHD test set accuracy: {accuracy:0.3f}\n'.format(**hd_evaluation_result))
 
     # Liver Cancer Dataset
-    lc_classifier, lc_evaluation_result = make_model(lc_dataset, LC_FEATURES, 'Level', n_classes=3)
+    lc_ftr_cols = split_features(LC_FEATURES)
+    lc_classifier, lc_evaluation_result = make_model(lc_dataset, lc_ftr_cols, 'Level', n_classes=3)
     print('\nLC test set accuracy: {accuracy:0.3f}\n'.format(**lc_evaluation_result))
 
     # Predict CC
@@ -109,3 +114,20 @@ if __name__ == '__main__':
     # Predict LC
     lc_outcome, lc_probability = predict(LC_FEATURES)
     print(f'Model predicts: "{lc_outcome}" ({lc_probability * 100:.1f}%)')
+
+    # Save Models
+    MODELS_DIRECTORY = 'models'
+    shutil.rmtree(MODELS_DIRECTORY, ignore_errors=True)
+    cc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(cc_ftr_cols))
+    hd_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(hd_ftr_cols))
+    lc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(lc_ftr_cols))
+
+    cc_path = cc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "cc_model"), cc_save_input_fn)
+    hd_path = hd_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "hd_model"), hd_save_input_fn)
+    lc_path = lc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "lc_model"), lc_save_input_fn)
+
+    # Load Models
+    cc_classifier = tf.saved_model.load(cc_path)
+    hd_classifier = tf.saved_model.load(hd_path)
+    lc_classifier = tf.saved_model.load(lc_path)
+
