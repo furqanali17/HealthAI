@@ -32,10 +32,10 @@ function checkProfileCompletion() {
         const warningElement = document.getElementById(fieldId + '-warning');
         if (isEmpty) {
             warningElement.innerText = 'Please fill this information';
-            warningElement.style.display = 'inline'; // Show the warning
+            warningElement.style.display = 'inline'; // Show warning
         } else {
             warningElement.innerText = '';
-            warningElement.style.display = 'none'; // Hide the warning
+            warningElement.style.display = 'none'; // Hide warning
         }
     }
 
