@@ -43,38 +43,35 @@ public class GpFragment extends Fragment {
         FirebaseUser user = auth.getCurrentUser();
 
         if (user != null) {
-            String email = user.getEmail();
-            if (email != null) {
-                // Replace '.' with ',' in the email to create a suitable key
-                String userKey = email.replace('.', ',');
+            String uid = user.getUid();
 
-                // Check if the GP is assigned in the database
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey);
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.hasChild("gp")) {
-                            // If GP is not assigned, enable the button
-                            findGP_btn.setEnabled(true);
-                            findGP_btn.setOnClickListener(v -> {
-                                Intent send = new Intent(getActivity(), gp_details_activity1.class);
-                                startActivity(send);
-                            });
-                        } else {
-                            // If GP is assigned, show a message
-                            Toast.makeText(getActivity(), "GP is already assigned", Toast.LENGTH_SHORT).show();
-                            Intent send = new Intent(getActivity(), gp_details_activity3.class);
+            // Check if the GP is assigned in the database
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.hasChild("Professionals")) {
+                        // If GP is not assigned, enable the button
+                        findGP_btn.setEnabled(true);
+                        findGP_btn.setOnClickListener(v -> {
+                            Intent send = new Intent(getActivity(), gp_details_activity1.class);
                             startActivity(send);
-                        }
+                        });
+                    } else {
+                        // If GP is assigned, show a message
+                        Toast.makeText(getActivity(), "GP is already assigned", Toast.LENGTH_SHORT).show();
+                        Intent send = new Intent(getActivity(), gp_details_activity3.class);
+                        startActivity(send);
                     }
+                }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        // Getting data failed, log a message
-                        Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
-                    }
-                });
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting data failed, log a message
+                    Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
+                }
+            });
         }
     }
+
 }

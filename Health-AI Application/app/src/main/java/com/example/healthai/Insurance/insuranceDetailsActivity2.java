@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.example.healthai.GP.gp_details_activity3;
 import com.example.healthai.Profile.UserDetails;
 import com.example.healthai.R;
+import com.example.healthai.fragments.UserFragment;
+import com.example.healthai.mainAppActivity.dashboardActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +33,7 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
     TextView insuranceCompanyTextView, insuranceYearTextView, policyNumberTextView, typeOfInsuranceTextView,
             subscriberIDTextView, groupNumberTextView, insurancePhoneTextView;
     CardView insurance_cardView;
+    FloatingActionButton goBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,12 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
         getInsuranceInfo();
         callInsurance_Btn = findViewById(R.id.callInsurance_Btn);
         callInsurance_Btn.setOnClickListener(v -> action_dial());
+
+        goBack = findViewById(R.id.goBack);
+        goBack.setOnClickListener(v -> {
+            Intent intent = new Intent(insuranceDetailsActivity2.this, dashboardActivity.class);
+            startActivity(intent);
+        });
     }
 
     // Inside getInsuranceInfo() method
@@ -55,30 +65,28 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
 
         if (user != null) {
-            String email = user.getEmail();
-            if (email != null) {
-                String userKey = email.replace('.', ',');
+            String uid = user.getUid();
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey).child("Insurance_Details");
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        InsuranceDetails insuranceDetails = dataSnapshot.getValue(InsuranceDetails.class);
-                        if (insuranceDetails != null) {
-                            insuranceCompanyTextView.setText(insuranceDetails.getInsuranceCompany());
-                            insuranceYearTextView.setText(insuranceDetails.getInsuranceYear());
-                            policyNumberTextView.setText(insuranceDetails.getPolicyNumber());
-                            typeOfInsuranceTextView.setText(insuranceDetails.getTypeOfInsurance());
-                            subscriberIDTextView.setText(insuranceDetails.getSubscriberID());
-                            groupNumberTextView.setText(insuranceDetails.getGroupNumber());
-                            insurancePhoneTextView.setText(insuranceDetails.getInsurancePhone());
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("Insurance_Details");
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    InsuranceDetails insuranceDetails = dataSnapshot.getValue(InsuranceDetails.class);
+                    if (insuranceDetails != null) {
+                        insuranceCompanyTextView.setText(insuranceDetails.getInsuranceCompany());
+                        insuranceYearTextView.setText(insuranceDetails.getInsuranceYear());
+                        policyNumberTextView.setText(insuranceDetails.getPolicyNumber());
+                        typeOfInsuranceTextView.setText(insuranceDetails.getTypeOfInsurance());
+                        subscriberIDTextView.setText(insuranceDetails.getSubscriberID());
+                        groupNumberTextView.setText(insuranceDetails.getGroupNumber());
+                        insurancePhoneTextView.setText(insuranceDetails.getInsurancePhone());
 
-                            // Update InsurancePhone variable
-                            InsurancePhone = insuranceDetails.getInsurancePhone();
-                        } else {
-                            Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
-                        }
+                        // Update InsurancePhone variable
+                        InsurancePhone = insuranceDetails.getInsurancePhone();
+                    } else {
+                        Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
                     }
+                }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -86,7 +94,7 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
                         Toast.makeText(insuranceDetailsActivity2.this, "Error fetching Insurance information", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
+            //}
         }
     }
 

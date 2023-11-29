@@ -11,6 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.healthai.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,7 +44,7 @@ public class gp_details_activity2 extends AppCompatActivity implements RecyclerV
         Intent intent = getIntent();
         String selectedSex = intent.getStringExtra("SELECTED_SEX");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("gps");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Professionals");
 
         Query query = databaseReference.orderByChild("sex").equalTo(selectedSex);
 
@@ -75,12 +77,21 @@ public class gp_details_activity2 extends AppCompatActivity implements RecyclerV
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        String email = user.getEmail();
-        assert email != null;
-        email = email.replace('.', ',');
+        assert user != null;
+        String uid = user.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(email);
-        databaseReference.child("gp").setValue(clickedGp);
-        Toast.makeText(gp_details_activity2.this, "Successfully Updated", Toast.LENGTH_LONG).show();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+        databaseReference.child("Professionals").setValue(clickedGp)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(gp_details_activity2.this, "Successfully Updated", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(gp_details_activity2.this, "Failed to Update", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
+
 }

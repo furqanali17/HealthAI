@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.healthai.R;
 import com.example.healthai.loginActivity.login;
 import com.example.healthai.mainAppActivity.dashboardActivity;
+import com.example.healthai.paypal.paypal_activity1;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,7 +63,7 @@ public class registerActivity extends AppCompatActivity {
         loginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent send = new Intent(registerActivity.this, login.class);
+                Intent send = new Intent(registerActivity.this, paypal_activity1.class);
                 startActivity(send);
                 finish();
             }
@@ -99,6 +100,9 @@ public class registerActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
+
+            Intent intent = new Intent(registerActivity.this, paypal_activity1.class);
+            startActivity(intent);
         });
     }
 }

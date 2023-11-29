@@ -7,11 +7,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthai.R;
+import com.example.healthai.mainAppActivity.dashboardActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,18 +25,30 @@ import com.google.firebase.database.ValueEventListener;
 
 public class gp_details_activity3 extends AppCompatActivity {
     Button callGP_Btn;
-    String gpMobile, gpName, gpSex;
-    TextView gpInfoTextView;
+    String gpMobile, gpFullName, gpSex, gpSpecialties;
+    TextView gpNameTextView, gpSexTextView, gpMobileTextView, gpSpecialtiesTextView;
+    FloatingActionButton goBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gp_details3);
 
+        gpNameTextView = findViewById(R.id.gp_name);
+        gpSexTextView = findViewById(R.id.gp_sex);
+        gpMobileTextView = findViewById(R.id.gp_mobile);
+        gpSpecialtiesTextView = findViewById(R.id.gpSpecialties);
+
         getGpInfo();
 
         callGP_Btn = findViewById(R.id.callGP_Btn);
-        gpInfoTextView = findViewById(R.id.gp_info_textView);
         callGP_Btn.setOnClickListener(v -> action_dial());
+
+        goBack = findViewById(R.id.goBack);
+        goBack.setOnClickListener(v -> {
+            Intent intent = new Intent(gp_details_activity3.this, dashboardActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void getGpInfo() {
@@ -41,35 +56,36 @@ public class gp_details_activity3 extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
 
         if (user != null) {
-            String email = user.getEmail();
-            if (email != null) {
-                String userKey = email.replace('.', ',');
+           String uid = user.getUid();
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey);
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child("gp").exists()) {
-                            gpMobile = dataSnapshot.child("gp").child("mobile").getValue(String.class);
-                            gpName = dataSnapshot.child("gp").child("name").getValue(String.class);
-                            gpSex = dataSnapshot.child("gp").child("sex").getValue(String.class);
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child("Professionals").exists()) {
+                        gpMobile = dataSnapshot.child("Professionals").child("mobile").getValue(String.class);
+                        gpFullName = dataSnapshot.child("Professionals").child("fullname").getValue(String.class);
+                        gpSex = dataSnapshot.child("Professionals").child("sex").getValue(String.class);
+                        gpSpecialties = dataSnapshot.child("Professionals").child("specialties").getValue(String.class);
 
-                            if (gpName != null && gpSex != null && gpMobile != null) {
-                                String gpInfo = "Name: " + gpName + "\nSex: " + gpSex + "\nPhone: " + gpMobile;
-                                gpInfoTextView.setText(gpInfo);
-                            } else {
-                                Toast.makeText(gp_details_activity3.this, "Error fetching GP information", Toast.LENGTH_SHORT).show();
-                            }
+                        if (gpFullName != null && gpSex != null && gpMobile != null && gpSpecialties != null) {
+                            // Set GP information in the TextViews
+                            gpNameTextView.setText(gpFullName);
+                            gpSexTextView.setText(gpSex);
+                            gpMobileTextView.setText(gpMobile);
+                            gpSpecialtiesTextView.setText(gpSpecialties);
+                        } else {
+                            Toast.makeText(gp_details_activity3.this, "Error fetching GP information", Toast.LENGTH_SHORT).show();
                         }
                     }
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle errors here
-                        Toast.makeText(gp_details_activity3.this, "Error fetching GP mobile number", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle errors here
+                    Toast.makeText(gp_details_activity3.this, "Error fetching GP mobile number", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
     public void action_dial(){

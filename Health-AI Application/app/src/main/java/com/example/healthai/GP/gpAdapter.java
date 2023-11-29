@@ -34,9 +34,10 @@ public class gpAdapter extends RecyclerView.Adapter<gpAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull gpAdapter.ViewHolder holder, int position) {
-        holder.gp_nameView.setText(gpList.get(position).getName());
+        holder.gp_nameView.setText(gpList.get(position). getFullname());
         holder.gp_sexView.setText(gpList.get(position).getSex());
         holder.gp_mobile.setText(gpList.get(position).getMobile());
+        holder.gp_specialties.setText(gpList.get(position).getSpecialties());
     }
 
     @Override
@@ -45,12 +46,13 @@ public class gpAdapter extends RecyclerView.Adapter<gpAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView gp_nameView, gp_sexView, gp_mobile;
+        TextView gp_nameView, gp_sexView, gp_mobile, gp_specialties;
         public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             gp_nameView = itemView.findViewById(R.id.gp_name);
             gp_sexView = itemView.findViewById(R.id.gp_sex);
             gp_mobile = itemView.findViewById(R.id.gp_mobile);
+            gp_specialties = itemView.findViewById(R.id.gpSpecialties);
 
             itemView.setOnClickListener(view -> {
                 if(recyclerViewInterface != null){

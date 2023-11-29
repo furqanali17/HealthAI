@@ -10,15 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.healthai.R;
+import com.google.android.material.radiobutton.MaterialRadioButton;
 
 public class FitnessFragment extends Fragment {
-    private EditText ageEditText, weightEditText, heightEditText, sexEditText;
+    private EditText ageEditText, weightEditText, heightEditText;
+    private RadioGroup sexRadioGroup;
+    private RadioButton radioButton;
     private TextView error_textView, bmiTextView, bmrTextView, bodyWaterTextView, bodyFatTextView, metAgeTextView, musMassTextView;
     private Button calcBtn;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fitness, container, false);
@@ -26,7 +32,7 @@ public class FitnessFragment extends Fragment {
         ageEditText = view.findViewById(R.id.age_editText);
         weightEditText = view.findViewById(R.id.weight_editText);
         heightEditText = view.findViewById(R.id.height_editText);
-        sexEditText = view.findViewById(R.id.sex_editText);
+        sexRadioGroup = view.findViewById(R.id.sex_radioGroup);
 
         bmiTextView = view.findViewById(R.id.bmi_textView);
         bmrTextView = view.findViewById(R.id.bmr_textView);
@@ -39,12 +45,20 @@ public class FitnessFragment extends Fragment {
         error_textView = view.findViewById(R.id.error_textView);
 
         calcBtn.setOnClickListener(v -> {
-            calculateBMI();
-            calculateBMR();
-            calculateBodyWater();
-            calculateBodyFat();
-            calculateMetabolicAge();
-            calculateMuscleMass();
+            int selectedId = sexRadioGroup.getCheckedRadioButtonId();
+            if (selectedId != -1) {
+                // Find the RadioButton by returned id
+                radioButton = view.findViewById(selectedId);
+
+                calculateBMI();
+                calculateBMR();
+                calculateBodyWater();
+                calculateBodyFat();
+                calculateMetabolicAge();
+                calculateMuscleMass();
+            }else{
+                error_textView.setText("Please select a gender");
+            }
         });
         return view;
     }
@@ -74,16 +88,10 @@ public class FitnessFragment extends Fragment {
         String ageStr = ageEditText.getText().toString();
         String weightStr = weightEditText.getText().toString();
         String heightStr = heightEditText.getText().toString();
-        String sexStr = sexEditText.getText().toString().toUpperCase(); // Convert to uppercase for case-insensitivity
+        String sexStr = radioButton.getText().toString().toUpperCase();
 
-        if (ageStr.isEmpty() || weightStr.isEmpty() || heightStr.isEmpty() || sexStr.isEmpty()) {
+        if (ageStr.isEmpty() || weightStr.isEmpty() || heightStr.isEmpty()) {
             error_textView.setText("Please enter all details");
-            return;
-        }
-
-        // Check if sex is either "M" or "F"
-        if (!sexStr.equals("M") && !sexStr.equals("F")) {
-            error_textView.setText("Please enter 'M' or 'F' for sex");
             return;
         }
 
@@ -94,7 +102,7 @@ public class FitnessFragment extends Fragment {
 
         // Calculate BMR using Harris-Benedict equation
         float bmr;
-        if (sexStr.equals("M")) {
+        if (sexStr.equals("MALE")) {
             bmr = 88.362f + (13.397f * weight) + (4.799f * height * 100) - (5.677f * age);
         } else {
             bmr = 447.593f + (9.247f * weight) + (3.098f * height * 100) - (4.330f * age);
@@ -129,30 +137,24 @@ public class FitnessFragment extends Fragment {
         String ageStr = ageEditText.getText().toString();
         String weightStr = weightEditText.getText().toString();
         String heightStr = heightEditText.getText().toString();
-        String sexStr = sexEditText.getText().toString().toUpperCase(); // Convert to uppercase for case-insensitivity
+        String sexStr = radioButton.getText().toString().toUpperCase();
 
         if (ageStr.isEmpty() || weightStr.isEmpty() || heightStr.isEmpty() || sexStr.isEmpty()) {
             error_textView.setText("Please enter all details");
             return;
         }
 
-        // Check if sex is either "M" or "F"
-        if (!sexStr.equals("M") && !sexStr.equals("F")) {
-            error_textView.setText("Please enter 'M' or 'F' for sex");
-            return;
-        }
-
         // Convert values to numbers
         float age = Float.parseFloat(ageStr);
         float weight = Float.parseFloat(weightStr);
-        float height = Float.parseFloat(heightStr) / 100; // Convert height to meters
+        float height = Float.parseFloat(heightStr) / 100;
 
         // Calculate BMI
         float bmi = weight / (height * height);
 
         // Estimate body fat using the YMCA formula
         float bodyFat;
-        if (sexStr.equals("M")) {
+        if (sexStr.equals("MALE")) {
             bodyFat = (1.20f * bmi) + (0.23f * age) - 16.2f;
         } else {
             bodyFat = (1.20f * bmi) + (0.23f * age) - 5.4f;
@@ -167,16 +169,10 @@ public class FitnessFragment extends Fragment {
         String ageStr = ageEditText.getText().toString();
         String weightStr = weightEditText.getText().toString();
         String heightStr = heightEditText.getText().toString();
-        String sexStr = sexEditText.getText().toString().toUpperCase(); // Convert to uppercase for case-insensitivity
+        String sexStr = radioButton.getText().toString().toUpperCase();
 
         if (ageStr.isEmpty() || weightStr.isEmpty() || heightStr.isEmpty() || sexStr.isEmpty()) {
             error_textView.setText("Please enter all details");
-            return;
-        }
-
-        // Check if sex is either "M" or "F"
-        if (!sexStr.equals("M") && !sexStr.equals("F")) {
-            error_textView.setText("Please enter 'M' or 'F' for sex");
             return;
         }
 
@@ -190,7 +186,7 @@ public class FitnessFragment extends Fragment {
 
         // Estimate metabolic age based on a simple formula
         float metabolicAge;
-        if (sexStr.equals("M")) {
+        if (sexStr.equals("MALE")) {
             metabolicAge = (0.18f * age) + (0.07f * weight) + (0.03f * height) + 8;
         } else {
             metabolicAge = (0.16f * age) + (0.06f * weight) + (0.03f * height) + 5;
@@ -204,16 +200,10 @@ public class FitnessFragment extends Fragment {
         String ageStr = ageEditText.getText().toString();
         String weightStr = weightEditText.getText().toString();
         String heightStr = heightEditText.getText().toString();
-        String sexStr = sexEditText.getText().toString().toUpperCase(); // Convert to uppercase for case-insensitivity
+        String sexStr = radioButton.getText().toString().toUpperCase();
 
         if (ageStr.isEmpty() || weightStr.isEmpty() || heightStr.isEmpty() || sexStr.isEmpty()) {
             error_textView.setText("Please enter all details");
-            return;
-        }
-
-        // Check if sex is either "M" or "F"
-        if (!sexStr.equals("M") && !sexStr.equals("F")) {
-            error_textView.setText("Please enter 'M' or 'F' for sex");
             return;
         }
 
@@ -227,7 +217,7 @@ public class FitnessFragment extends Fragment {
 
         // Estimate muscle mass using a general formula
         float muscleMass;
-        if (sexStr.equals("M")) {
+        if (sexStr.equals("MALE")) {
             muscleMass = (bmi * 1.1f) + (0.03f * age) + 0.4f;
         } else {
             muscleMass = (bmi * 1.07f) + (0.03f * age) + 0.2f;

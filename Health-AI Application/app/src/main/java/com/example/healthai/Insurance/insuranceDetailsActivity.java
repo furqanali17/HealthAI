@@ -42,6 +42,9 @@ public class insuranceDetailsActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         buttonSave.setEnabled(false);
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
         isInsuranceAdded();
 
         editTextInsuranceCompany = findViewById(R.id.editTextInsuranceCompany);
@@ -61,14 +64,16 @@ public class insuranceDetailsActivity extends AppCompatActivity {
             GroupNumber = editTextGroupNumber.getText().toString();
             InsurancePhone = editTextInsurancePhone.getText().toString();
 
-            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.', ',');
+/*            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.', ',');*/
+            assert user != null;
+            String uid = user.getUid();
 
             InsuranceDetails insuranceDetails = new InsuranceDetails(InsuranceCompany,
                     InsuranceYear, PolicyNumber, TypeOfInsurance, SubscriberID,
                     GroupNumber, InsurancePhone);
 
             db = FirebaseDatabase.getInstance();
-            databaseReference = db.getReference("Users").child(email);
+            databaseReference = db.getReference("Users").child(uid);
 
             databaseReference.child("Insurance_Details").setValue(insuranceDetails).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -94,29 +99,25 @@ public class insuranceDetailsActivity extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
 
         if (user != null) {
-            String email = user.getEmail();
-            if (email != null) {
-                String userKey = email.replace('.', ',');
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userKey);
-                databaseReference.child("Insurance_Details").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (!dataSnapshot.exists()) {
-                            buttonSave.setEnabled(true);
-                        } else {
-                            // If GP is assigned, show a message
-                            Toast.makeText(insuranceDetailsActivity.this, "Insurance details are already added", Toast.LENGTH_SHORT).show();
-                            Intent send = new Intent(insuranceDetailsActivity.this, insuranceDetailsActivity2.class);
-                            startActivity(send);
-                        }
+            String uid = user.getUid();
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+            databaseReference.child("Insurance_Details").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
+                        buttonSave.setEnabled(true);
+                    } else {
+                        // If GP is assigned, show a message
+                        Toast.makeText(insuranceDetailsActivity.this, "Insurance details are already added", Toast.LENGTH_SHORT).show();
+                        Intent send = new Intent(insuranceDetailsActivity.this, insuranceDetailsActivity2.class);
+                        startActivity(send);
                     }
+                }
 
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
-                    }
-                });
-            }
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
+                }
+            });
         }
     }
 }

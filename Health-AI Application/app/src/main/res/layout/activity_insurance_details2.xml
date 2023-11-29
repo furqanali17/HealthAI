@@ -204,4 +204,16 @@
         android:layout_below="@+id/call_textView"
         android:layout_centerHorizontal="true"
         android:text="Call Insurance" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/goBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/go_back_to_the_previous_screen"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
 </RelativeLayout>

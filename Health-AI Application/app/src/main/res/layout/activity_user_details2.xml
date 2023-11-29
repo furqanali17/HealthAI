@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/personalDetailsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Personal Details"
@@ -16,16 +16,19 @@
         android:fontFamily="@font/acme"/>
 
     <TextView
+        android:id="@+id/detailsDescriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Please enter the details for more personalized result"
         android:textSize="14sp"
+        android:layout_below="@id/personalDetailsText"
         android:layout_margin="10dp" />
 
     <EditText
         android:id="@+id/name_editText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/detailsDescriptionText"
         android:backgroundTint="@color/blue_800"
         android:hint="Name"/>
 
@@ -33,23 +36,46 @@
         android:id="@+id/age_editText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/name_editText"
         android:backgroundTint="@color/blue_800"
         android:hint="Age"
         android:inputType="number" />
 
-
-    <EditText
-        android:id="@+id/sex_editText"
+    <TextView
+        android:id="@+id/sexText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/blue_800"
-        android:hint="Sex" />
+        android:layout_height="wrap_content"
+        android:text="Sex: "
+        android:textSize="20sp"
+        android:layout_below="@id/age_editText"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"/>
 
+    <RadioGroup
+        android:id="@+id/sex_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/sexText">
+
+        <RadioButton
+            android:id="@+id/male_radioButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/female_radioButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
 
     <EditText
         android:id="@+id/mobile_editText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/sex_radioGroup"
         android:backgroundTint="@color/blue_800"
         android:hint="Mobile"
         android:inputType="number" />
@@ -58,8 +84,20 @@
         android:id="@+id/buttonSave"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@id/mobile_editText"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Save" />
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/goBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/go_back_to_the_previous_screen"
+        android:src="@drawable/baseline_arrow_back_24"/>
+
+</RelativeLayout>

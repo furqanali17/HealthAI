@@ -8,15 +8,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="299dp"
-        android:layout_height="599dp"
+        android:layout_width="300dp"
+        android:layout_height="519dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,19 +30,19 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgFormHighFatDiet"
+                android:id="@+id/rgFormStroke"
                 android:layout_width="169dp"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholYes"
+                    android:id="@+id/rbFormStrokeYes"
                     android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholNo"
+                    android:id="@+id/rbFromStrokeNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No" />
@@ -63,19 +62,19 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgFormHighFatDiet"
+                android:id="@+id/rgFormDifficultyWalking"
                 android:layout_width="169dp"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholYes"
+                    android:id="@+id/rbFormDifficultyWalkingYes"
                     android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholNo"
+                    android:id="@+id/rbFormDifficultyWalkingNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No" />
@@ -95,19 +94,19 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgFormHighFatDiet"
+                android:id="@+id/rgFormAsthma"
                 android:layout_width="169dp"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholYes"
+                    android:id="@+id/rbFormAsthmaYes"
                     android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholNo"
+                    android:id="@+id/rgFormAsthmaNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No" />
@@ -127,19 +126,19 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgFormHighFatDiet"
+                android:id="@+id/rgFormKidneyDisease"
                 android:layout_width="169dp"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholYes"
+                    android:id="@+id/rgForKidneyDiseaseYes"
                     android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholNo"
+                    android:id="@+id/rgFormKidneyDiseaseNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No" />
@@ -159,19 +158,19 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgFormHighFatDiet"
+                android:id="@+id/rgFormPrevSkinCancer"
                 android:layout_width="169dp"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholYes"
+                    android:id="@+id/rbFormPrevSkinCancerYes"
                     android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:text="Yes" />
 
                 <RadioButton
-                    android:id="@+id/rbFormAlcoholNo"
+                    android:id="@+id/rbFormPrevSkinCancerNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No" />
@@ -186,34 +185,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView35"
-                    android:layout_width="228dp"
-                    android:layout_height="46dp"
-                    android:text="Does your family have a history of cancer?"
-                    android:textSize="18sp" />
-
-                <RadioGroup
-                    android:id="@+id/rgFormHighFatDiet"
-                    android:layout_width="169dp"
-                    android:layout_height="44dp"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rbFormAlcoholYes"
-                        android:layout_width="83dp"
-                        android:layout_height="wrap_content"
-                        android:text="Yes" />
-
-                    <RadioButton
-                        android:id="@+id/rbFormAlcoholNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="No" />
-                </RadioGroup>
-            </LinearLayout>
+                android:orientation="vertical" />
         </LinearLayout>
     </LinearLayout>
 
@@ -243,9 +215,9 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/button13"
+        android:layout_width="362dp"
+        android:layout_height="53dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="25dp"

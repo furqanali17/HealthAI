@@ -126,6 +126,7 @@
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/tiFormConsumeAlcohol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,6 +139,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormAirPolution"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="1-8" />
@@ -149,6 +151,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormFrequentlySmoke"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="1-7" />
@@ -161,6 +164,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormOccupationalHazards"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:hint="1-8" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -172,6 +176,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormBalancedDiet"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -182,9 +187,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormObesity"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -194,6 +200,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormPassiveSmoke"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -205,6 +212,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormDustAllergies"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -216,8 +224,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormGeneticRisk"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -227,8 +236,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormChronicLungDisease"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:hint="1-7" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </LinearLayout>

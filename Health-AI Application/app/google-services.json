@@ -13,7 +13,20 @@
           "package_name": "com.company.healthai"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "259705293143-02fct5b4bq2e5ibqfhhfsds8shdnd1tm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.healthai",
+            "certificate_hash": "986250dda834ada996e8405f449b3a866e1dc0ab"
+          }
+        },
+        {
+          "client_id": "259705293143-sdg836bv0a9m7c05idkcpngs5igilcfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDEFJpam4D1GhVjPu298nMi80GPsOd4Flc"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259705293143-sdg836bv0a9m7c05idkcpngs5igilcfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -32,7 +50,20 @@
           "package_name": "com.example.healthai"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "259705293143-e12cgjdm87mc5vc279cbu30klb1dnp9a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthai",
+            "certificate_hash": "986250dda834ada996e8405f449b3a866e1dc0ab"
+          }
+        },
+        {
+          "client_id": "259705293143-sdg836bv0a9m7c05idkcpngs5igilcfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDEFJpam4D1GhVjPu298nMi80GPsOd4Flc"
@@ -40,7 +71,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259705293143-sdg836bv0a9m7c05idkcpngs5igilcfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

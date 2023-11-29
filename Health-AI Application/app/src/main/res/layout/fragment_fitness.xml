@@ -26,18 +26,41 @@
         android:layout_below="@id/textView"
         android:hint="@string/age" />
 
-    <EditText
-        android:id="@+id/sex_editText"
+    <TextView
+        android:id="@+id/sex_TextView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/age_editText"
-        android:hint="@string/sex_m_f" />
+        android:layout_height="wrap_content"
+        android:text="Sex: "
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_below="@+id/age_editText"/>
+
+    <RadioGroup
+        android:id="@+id/sex_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/sex_TextView">
+
+        <RadioButton
+            android:id="@+id/male_radioButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/female_radioButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
 
     <EditText
         android:id="@+id/weight_editText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/sex_editText"
+        android:layout_below="@id/sex_radioGroup"
         android:hint="@string/weight_in_kg" />
 
     <EditText

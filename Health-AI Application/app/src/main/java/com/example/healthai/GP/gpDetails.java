@@ -3,15 +3,16 @@ package com.example.healthai.GP;
 import java.io.Serializable;
 
 public class gpDetails implements Serializable {
-    String id, name, sex, mobile;
+    String id, fullname, sex, mobile, specialties;
 
     public gpDetails() {
     }
 
-    public gpDetails(String name, String sex, String mobile) {
-        this.name = name;
+    public gpDetails(String fullname, String sex, String mobile, String specialties) {
+        this.fullname = fullname;
         this.sex = sex;
         this.mobile = mobile;
+        this.specialties = specialties;
     }
 
     public String getId() {
@@ -22,12 +23,12 @@ public class gpDetails implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getSex() {
@@ -36,6 +37,14 @@ public class gpDetails implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getSpecialties() {
+        return specialties;
+    }
+
+    public void setSpecialties(String specialties) {
+        this.specialties = specialties;
     }
 
     public String getMobile() {

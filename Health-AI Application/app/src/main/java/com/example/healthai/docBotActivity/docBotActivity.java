@@ -23,10 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+
 
 public class docBotActivity extends AppCompatActivity {
     private docBotAdapter adapter;
@@ -39,7 +36,7 @@ public class docBotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doc_bot);
         sendBtn = findViewById(R.id.btnSendMessage);
         textInput = findViewById(R.id.tiMessage);
-        docBot = new DocBot("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");
+        docBot = new DocBot("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");
 
 
 

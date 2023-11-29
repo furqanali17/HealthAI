@@ -25,7 +25,7 @@ public class UserDetailsActivity1 extends AppCompatActivity {
     FloatingActionButton editFab;
     FirebaseAuth auth;
     CardView user_cardView;
-    TextView nameTextView, ageTextView, sexTextView, mobileTextView;
+    TextView nameTextView, ageTextView, sexTextView, mobileTextView, emailTextView;
     FirebaseUser user;
     DatabaseReference userReference;
     @Override
@@ -39,6 +39,7 @@ public class UserDetailsActivity1 extends AppCompatActivity {
         ageTextView = findViewById(R.id.ageTextView);
         sexTextView = findViewById(R.id.sexTextView);
         mobileTextView = findViewById(R.id.mobileTextView);
+        emailTextView = findViewById(R.id.emailTextView);
 
         editFab.setOnClickListener(v -> {
             Intent send = new Intent(UserDetailsActivity1.this, UserDetailsActivity2.class);
@@ -48,10 +49,12 @@ public class UserDetailsActivity1 extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
+        /*assert user != null;
+        String email = user.getEmail().replace('.', ',');*/
         assert user != null;
-        String email = user.getEmail().replace('.', ',');
+        String uid = user.getUid();
 
-        userReference = FirebaseDatabase.getInstance().getReference("Users").child(email);
+        userReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
 
         userReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
@@ -64,6 +67,7 @@ public class UserDetailsActivity1 extends AppCompatActivity {
                     ageTextView.setText(String.valueOf(userDetails.getAge()));
                     sexTextView.setText(userDetails.getSex());
                     mobileTextView.setText(userDetails.getMobile());
+                    emailTextView.setText(userDetails.getEmail());
                 }
             }
             public void onCancelled(DatabaseError databaseError) {
