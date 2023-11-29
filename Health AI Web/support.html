@@ -4,40 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Support Chat-Bot</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="profile.html">Profile</a></li>
             <li><a id="logout" style="cursor: pointer;">Logout</a></li>
         </ul>
     </nav>
 
-    <h1 id="professional-name">Welcome Dr. Name</h1>
+    <h1 id="chatTitle">Support Bot</h1>
     <main>
-        <section class="patient-list">
-            <h2>Patient List</h2>
-            <ul id="patient-list">
-            </ul>
-        </section>
+        <div id="chatDiv">
+            <div id="responseText"></div>
 
+            <form id="supportForm" action="javascript:void(0)">
+                <input type="text" id="queryText" placeholder="Ask a question...">
+                <button type="submit" id="submitBtn">Send</button>
+            </form>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
-    <div id="chatbot-button-container">
-        <button id="chatbot-button">Chat with Support</button>
-    </div>
 
     <script type="module" src="support.js"></script>
     <script type="module" src="database_connection.js"></script>
     <script type="module" src="logout.js"></script>
-    <script type="module" src="dashboard.js"></script>
 </body>
 
 </html>

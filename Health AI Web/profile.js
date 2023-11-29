@@ -131,5 +131,8 @@ function updateProfileField(uid, field, value) {
     });
 }
 
+document.getElementById('chatbot-button').addEventListener('click', function () {
+    window.location.href = 'support.html';
+});
 window.toggleEditSave = toggleEditSave;
 window.updateSex = updateSex;

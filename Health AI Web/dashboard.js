@@ -56,3 +56,7 @@ function createListItem(details, userId) {
     `;
     return listItem;
 }
+
+document.getElementById('chatbot-button').addEventListener('click', function () {
+    window.location.href = 'support.html';
+});
