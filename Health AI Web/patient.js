@@ -4,12 +4,13 @@ import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.5.0/firebase
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const patientId = urlParams.get('patientId');
-    
+
     if (patientId) {
         loadPatientData(patientId);
     } else {
         // Handle the case where no patient ID is provided
         console.error('No patient ID provided in URL');
+
     }
 });
 
@@ -21,14 +22,18 @@ function loadPatientData(patientId) {
             updatePatientDisplay(patientData);
         } else {
             console.error('Patient data not found');
-            // Handle case where patient data is not found
+            document.getElementById('patient-name-header').innerText = 'No Patient Details';
+            const detailsToClear = ['patient-name', 'patient-age', 'patient-sex', 'patient-email', 'patient-mobile', 'insurance-company', 'policy-number', 'group-number', 'insurance-phone', 'insurance-year', 'subscriber-id', 'type-of-insurance'];
+            detailsToClear.forEach(id => {
+                document.getElementById(id).innerText = 'No patient details recorded';
+            });
         }
     });
 }
 
 function updatePatientDisplay(data) {
     // Updating patient details
-    document.getElementById('patient-name-header').innerText = `Welcome, ${data.name}`;
+    document.getElementById('patient-name-header').innerText = `Patient: ${data.name}`;
     document.getElementById('patient-name').innerText = data.name;
     document.getElementById('patient-age').innerText = data.age;
     document.getElementById('patient-sex').innerText = data.sex;
@@ -44,9 +49,25 @@ function updatePatientDisplay(data) {
         document.getElementById('insurance-year').innerText = data.Insurance_Details.insuranceYear;
         document.getElementById('subscriber-id').innerText = data.Insurance_Details.subscriberID;
         document.getElementById('type-of-insurance').innerText = data.Insurance_Details.typeOfInsurance;
-        // Add more fields as per your data structure
     } else {
         console.error('Insurance details not found');
-        // Handle case where insurance details are not available
+        const insuranceDetailElements = ['insurance-company', 'policy-number', 'group-number', 'insurance-phone', 'insurance-year', 'subscriber-id', 'type-of-insurance'];
+        insuranceDetailElements.forEach(elementId => {
+            document.getElementById(elementId).innerText = 'No insurance details recorded';
+        });
     }
 }
+
+document.getElementById('chatbot-button').addEventListener('click', function () {
+    window.location.href = 'support.html';
+});
+
+document.getElementById('view-form-button').addEventListener('click', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const patientId = urlParams.get('patientId');
+    if (patientId) {
+        window.location.href = `form.html?patientId=${patientId}`;
+    } else {
+        console.error('No patient ID available for form view');
+    }
+});

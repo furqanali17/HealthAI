@@ -35,7 +35,7 @@ function displayList(node, listElementId, professionalId) {
                 const details = childSnapshot.val();
 
                 // Check if the user is assigned to the logged-in professional
-                if (details.assignedProfessionalId === professionalId) {
+                if (details.assignedProfessionalID === professionalId) {
                     const listItem = createListItem(details, childSnapshot.key);
                     listElement.appendChild(listItem);
                 }

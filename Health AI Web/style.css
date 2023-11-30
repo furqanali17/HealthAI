@@ -157,28 +157,67 @@ footer {
     box-sizing: border-box;
 }
 
-.doctor-details, .patient-details {
+.doctor-details,
+.patient-details {
     flex-basis: 45%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.contact-details, .insurance-details {
+.contact-details,
+.insurance-details {
     width: 45%;
     padding: 10px;
     border: none;
 }
 
-.doctor-details h2, .contact-details h2,
-.patient-details h2, .insurance-details h2 {
+.doctor-details h2,
+.contact-details h2,
+.patient-details h2,
+.insurance-details h2 {
     margin-top: 0;
     margin-bottom: 15px;
 }
 
-.doctor-details div, .contact-details div,
-.patient-details div, .insurance-details div {
+.doctor-details div,
+.contact-details div,
+.patient-details div,
+.insurance-details div {
     margin-bottom: 15px;
+}
+
+.form-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+}
+
+.form-container {
+    width: 100%;
+    /* Full width for the first 25 entries */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.form-detail-entry {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 10px;
+}
+
+.form-detail-entry h4, .form-detail-entry p {
+    margin-top: 0; /* Remove top margin to align at the same level */
+    margin-bottom: 4px; /* Adjust as needed */
+    flex: 0 0 48%; /* Width of the question/answer */
+}
+
+.form-detail-entry h4 {
+    margin-right: 4%; /* Spacing between question and answer */
 }
 
 .admin-theme nav,
