@@ -5,7 +5,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/fi
 onAuthStateChanged(auth, (user) => {
     if (user) {
         displayUserName('Professionals', user.uid, 'professional-name', 'Dr.');
-        displayList('Users', 'patient-list');
+        displayList('Users', 'patient-list', user.uid);
     } else {
         window.location.href = 'index.html';
     }
@@ -24,7 +24,7 @@ function displayUserName(userType, userId, elementId, defaultTitle) {
     });
 }
 
-function displayList(node, listElementId) {
+function displayList(node, listElementId, professionalId) {
     const refNode = ref(database, node);
     onValue(refNode, (snapshot) => {
         const listElement = document.getElementById(listElementId);
@@ -32,10 +32,13 @@ function displayList(node, listElementId) {
 
         if (snapshot.exists()) {
             snapshot.forEach((childSnapshot) => {
-                const userId = childSnapshot.key;
                 const details = childSnapshot.val();
-                const listItem = createListItem(details, userId);
-                listElement.appendChild(listItem);
+
+                // Check if the user is assigned to the logged-in professional
+                if (details.assignedProfessionalId === professionalId) {
+                    const listItem = createListItem(details, childSnapshot.key);
+                    listElement.appendChild(listItem);
+                }
             });
         } else {
             listElement.innerText = `No ${node} found`;
@@ -46,6 +49,7 @@ function displayList(node, listElementId) {
 function createListItem(details, userId) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-list-item');
+    listItem.style.cursor = 'pointer'; // Make it look clickable
 
     listItem.innerHTML = `
         <div><strong>Name: </strong> ${details.name}</div>
@@ -54,6 +58,12 @@ function createListItem(details, userId) {
         <div><strong>Mobile :</strong> ${details.mobile}</div>
         <div><strong>Email: </strong> ${details.email}</div>
     `;
+
+    // Add click event to redirect to patient.html with patient ID
+    listItem.addEventListener('click', function () {
+        window.location.href = `patient.html?patientId=${userId}`;
+    });
+
     return listItem;
 }
 
