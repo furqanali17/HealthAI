@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient's Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a id="logout" style="cursor: pointer;">Logout</a></li>
+        </ul>
+    </nav>
+
+    <h1 id="patient-name-header">Patient's Profile</h1>
+    <main>
+        <div class="profile-container">
+            <section class="patient-details">
+                <h2>Patient Details</h2>
+                <div>
+                    <h3>Name</h3>
+                    <p id="patient-name">[Patient's Name Here]</p>
+                </div>
+                <div>
+                    <h3>Age</h3>
+                    <p id="patient-age">[Age Here]</p>
+                </div>
+                <div>
+                    <h3>Sex</h3>
+                    <p id="patient-sex">[Sex Here]</p>
+                </div>
+                <div>
+                    <h3>Email</h3>
+                    <p id="patient-email">[Email Here]</p>
+                </div>
+                <div>
+                    <h3>Mobile Number</h3>
+                    <p id="patient-mobile">[Mobile Number Here]</p>
+                </div>
+            </section>
+
+            <section class="insurance-details">
+                <h2>Insurance Details</h2>
+                <div>
+                    <h3>Insurance Company</h3>
+                    <p id="insurance-company">[Company Name Here]</p>
+                </div>
+                <div>
+                    <h3>Policy Number</h3>
+                    <p id="policy-number">[Policy Number Here]</p>
+                </div>
+                <div>
+                    <h3>Group Number</h3>
+                    <p id="group-number">[Group Number Here]</p>
+                </div>
+                <div>
+                    <h3>Insurance Phone</h3>
+                    <p id="insurance-phone">[Insurance Phone Here]</p>
+                </div>
+                <div>
+                    <h3>Insurance Year</h3>
+                    <p id="insurance-year">[Insurance Year Here]</p>
+                </div>
+                <div>
+                    <h3>Subscriber ID</h3>
+                    <p id="subscriber-id">[Subscriber ID Here]</p>
+                </div>
+                <div>
+                    <h3>Type of Insurance</h3>
+                    <p id="type-of-insurance">[Type of Insurance Here]</p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Health AI</p>
+    </footer>
+    <div id="chatbot-button-container">
+        <button id="chatbot-button">Chat with Support</button>
+    </div>
+
+    <script type="module" src="database_connection.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="patient.js"></script>
+</body>
+
+</html>
