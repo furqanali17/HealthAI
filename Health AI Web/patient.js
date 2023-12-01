@@ -34,11 +34,11 @@ function loadPatientData(patientId) {
 function updatePatientDisplay(data) {
     // Updating patient details
     document.getElementById('patient-name-header').innerText = `Patient: ${data.name}`;
-    document.getElementById('patient-name').innerText = data.name;
-    document.getElementById('patient-age').innerText = data.age;
-    document.getElementById('patient-sex').innerText = data.sex;
-    document.getElementById('patient-email').innerText = data.email;
-    document.getElementById('patient-mobile').innerText = data.mobile;
+    updateContactDetail('patient-name', data.name);
+    updateContactDetail('patient-age', data.age);
+    updateContactDetail('patient-sex', data.sex);
+    updateContactDetail('patient-email', data.email);
+    updateContactDetail('patient-mobile', data.mobile);
 
     // Updating insurance details
     if (data.Insurance_Details) {
@@ -55,6 +55,13 @@ function updatePatientDisplay(data) {
         insuranceDetailElements.forEach(elementId => {
             document.getElementById(elementId).innerText = 'No insurance details recorded';
         });
+    }
+}
+
+function updateContactDetail(id, value) {
+    const detailElement = document.getElementById(id);
+    if (detailElement) {
+        detailElement.innerText = value || 'Not Provided';
     }
 }
 
