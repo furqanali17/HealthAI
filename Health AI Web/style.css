@@ -206,18 +206,40 @@ footer {
 
 .form-detail-entry {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
+    /* Align items to the top */
     margin-bottom: 10px;
 }
 
-.form-detail-entry h4, .form-detail-entry p {
-    margin-top: 0; /* Remove top margin to align at the same level */
-    margin-bottom: 4px; /* Adjust as needed */
-    flex: 0 0 48%; /* Width of the question/answer */
+.form-detail-entry h4,
+.form-detail-entry p {
+    margin-top: 0;
+    /* Remove top margin to align at the same level */
+    margin-bottom: 4px;
+    /* Adjust as needed */
+    flex: 0 0 48%;
+    /* Width of the question/answer */
 }
 
 .form-detail-entry h4 {
-    margin-right: 4%; /* Spacing between question and answer */
+    margin-right: 4%;
+    /* Spacing between question and answer */
+}
+
+.contact-detail-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-detail-entry h3 {
+    flex: 0 0 30%;
+    /* Adjust the width as necessary */
+    margin-right: 10px;
+}
+
+.contact-detail-entry p {
+    flex: 1;
 }
 
 .admin-theme nav,
