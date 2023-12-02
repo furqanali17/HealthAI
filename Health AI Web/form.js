@@ -56,9 +56,13 @@ function formatValue(value) {
     } else if (value === false || value === 0) {
         return 'No';
     }
-    return value; // Return the value as is if it's not true/false or 1/0
+    return value;
 }
 
 function formatQuestionKey(key) {
     return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 }
+
+document.getElementById('chatbot-button').addEventListener('click', function () {
+    window.location.href = 'support.html';
+});

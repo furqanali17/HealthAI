@@ -4,6 +4,7 @@ h2,
 p {
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 body {
@@ -161,7 +162,6 @@ footer {
 .patient-details {
     flex-basis: 45%;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
@@ -187,6 +187,7 @@ footer {
     margin-bottom: 15px;
 }
 
+
 .form-details {
     display: flex;
     flex-direction: column;
@@ -196,7 +197,6 @@ footer {
 
 .form-container {
     width: 100%;
-    /* Full width for the first 25 entries */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -207,22 +207,18 @@ footer {
 .form-detail-entry {
     display: flex;
     align-items: flex-start;
-    /* Align items to the top */
     margin-bottom: 10px;
 }
 
 .form-detail-entry h4,
 .form-detail-entry p {
     margin-top: 0;
-    /* Remove top margin to align at the same level */
     margin-bottom: 4px;
-    /* Adjust as needed */
     flex: 0 0 48%;
-    /* Width of the question/answer */
 }
 
 .form-detail-entry h4 {
-    margin-right: 4%;
+    margin-right: -25%;
     /* Spacing between question and answer */
 }
 
@@ -234,11 +230,25 @@ footer {
 
 .contact-detail-entry h3 {
     flex: 0 0 30%;
-    /* Adjust the width as necessary */
     margin-right: 10px;
 }
 
 .contact-detail-entry p {
+    flex: 1;
+}
+
+.insurance-detail-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.insurance-detail-entry h3 {
+    flex: 0 0 30%;
+    margin-right: 10px;
+}
+
+.insurance-detail-entry p {
     flex: 1;
 }
 
@@ -269,6 +279,100 @@ footer {
     width: 100%;
 }
 
+body.admin-form-theme {
+    background-color: #f0f0f0;
+}
+
+.admin-form-theme nav {
+    background-color: red;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.admin-form-theme nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.admin-form-theme nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.admin-form-theme nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.admin-form-theme main {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.admin-form-theme .form-question {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.admin-form-theme label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-form-theme input[type="number"],
+.admin-form-theme input[type="radio"],
+.admin-form-theme input[type="text"] {
+    margin-right: 10px;
+}
+
+.admin-form-theme .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.admin-form-theme .btn:hover {
+    background-color: darkred;
+}
+
+.admin-form-theme footer {
+    text-align: center;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.manage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.current-dataset {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+}
+
+#dataset-display {
+    flex-grow: 1;
+    overflow: auto;
+}
+
 .user-list-item {
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -290,4 +394,61 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.systemChat {
+    text-align: right;
+    margin-left: 50%;
+    color: green;
+}
+
+.userChat {
+    margin-right: 50%;
+    text-align: left;
+}
+
+#chatDiv {
+    position: absolute;
+    max-height: 80%;
+    left: 10%;
+    bottom: 10%;
+    width: 80%;
+}
+
+#chatTitle {
+    text-align: center;
+    margin-top: 1%;
+}
+
+#responseText {
+    overflow: auto;
+    scroll-behavior: auto;
+    position: absolute;
+    width: 80%;
+    max-height: 65%;
+    left: 10%;
+    bottom: 22%;
+}
+
+.form-question {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.btn {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }
