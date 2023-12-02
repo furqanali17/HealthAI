@@ -20,22 +20,23 @@
     <h1>Manage Data</h1>
 
     <main class="manage-container">
+
         <section class="current-dataset">
             <h2>Current Dataset</h2>
+            <div class="buttons-container">
+                <button id="create-dataset" class="btn">Create New Dataset</button>
+                <button id="export-dataset" class="btn">Export Dataset</button>
+            </div>
             <div id="dataset-display">
-]            </div>
+            </div>
         </section>
 
-        <section class="data-options">
-            <h2>Data Operations</h2>
-            <button id="create-dataset" class="btn">Create New Dataset</button>
-            <button id="export-dataset" class="btn">Export Dataset</button>
-        </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Health AI</p>
     </footer>
+
     <script type="module" src="database_connection.js"></script>
     <script type="module" src="logout.js"></script>
     <script type="module" src="manage.js"></script>

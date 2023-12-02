@@ -40,15 +40,15 @@ function updatePatientDisplay(data) {
     updateContactDetail('patient-email', data.email);
     updateContactDetail('patient-mobile', data.mobile);
 
-    // Updating insurance details
-    if (data.Insurance_Details) {
-        document.getElementById('insurance-company').innerText = data.Insurance_Details.insuranceCompany;
-        document.getElementById('policy-number').innerText = data.Insurance_Details.policyNumber;
-        document.getElementById('group-number').innerText = data.Insurance_Details.groupNumber;
-        document.getElementById('insurance-phone').innerText = data.Insurance_Details.insurancePhone;
-        document.getElementById('insurance-year').innerText = data.Insurance_Details.insuranceYear;
-        document.getElementById('subscriber-id').innerText = data.Insurance_Details.subscriberID;
-        document.getElementById('type-of-insurance').innerText = data.Insurance_Details.typeOfInsurance;
+      // Updating insurance details
+      if (data.Insurance_Details) {
+        updateInsuranceDetail('insurance-company', data.Insurance_Details.insuranceCompany);
+        updateInsuranceDetail('policy-number', data.Insurance_Details.policyNumber);
+        updateInsuranceDetail('group-number', data.Insurance_Details.groupNumber);
+        updateInsuranceDetail('insurance-phone', data.Insurance_Details.insurancePhone);
+        updateInsuranceDetail('insurance-year', data.Insurance_Details.insuranceYear);
+        updateInsuranceDetail('subscriber-id', data.Insurance_Details.subscriberID);
+        updateInsuranceDetail('type-of-insurance', data.Insurance_Details.typeOfInsurance);
     } else {
         console.error('Insurance details not found');
         const insuranceDetailElements = ['insurance-company', 'policy-number', 'group-number', 'insurance-phone', 'insurance-year', 'subscriber-id', 'type-of-insurance'];
@@ -64,6 +64,13 @@ function updateContactDetail(id, value) {
         detailElement.innerText = value || 'Not Provided';
     }
 }
+function updateInsuranceDetail(id, value) {
+    const detailElement = document.getElementById(id);
+    if (detailElement) {
+        detailElement.innerText = value || 'Not Provided';
+    }
+}
+
 
 document.getElementById('chatbot-button').addEventListener('click', function () {
     window.location.href = 'support.html';
