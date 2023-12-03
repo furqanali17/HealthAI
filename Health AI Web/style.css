@@ -277,82 +277,6 @@ footer {
     width: 100%;
 }
 
-body.admin-form-theme {
-    background-color: #f0f0f0;
-}
-
-.admin-form-theme nav {
-    background-color: red;
-    padding: 10px 0;
-    text-align: center;
-}
-
-.admin-form-theme nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.admin-form-theme nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.admin-form-theme nav a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-
-.admin-form-theme main {
-    width: 80%;
-    margin: 20px auto;
-}
-
-.admin-form-theme .form-question {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-
-.admin-form-theme label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.admin-form-theme input[type="number"],
-.admin-form-theme input[type="radio"],
-.admin-form-theme input[type="text"] {
-    margin-right: 10px;
-}
-
-.admin-form-theme .btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.admin-form-theme .btn:hover {
-    background-color: darkred;
-}
-
-.admin-form-theme footer {
-    text-align: center;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 .manage-container {
     display: flex;
     flex-direction: column;
@@ -426,10 +350,6 @@ body.admin-form-theme {
     max-height: 65%;
     left: 10%;
     bottom: 22%;
-}
-
-.form-question {
-    margin-bottom: 15px;
 }
 
 label {
