@@ -6,15 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".paypal.paypalActivity">
 
+    <TextView
+        android:id="@+id/Payment_Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/acme"
+        android:text="Get the Subscription"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/payment_info_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enjoy all the features at one place"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/Payment_Page"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/price_view"
+        android:layout_below="@+id/payment_info_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="Payment Amount: $10"
+        android:textSize="20sp" />
+
+
     <com.paypal.checkout.paymentbutton.PaymentButtonContainer
         android:id="@+id/payment_button_container"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/price_view"
         app:paypal_button_color="blue"
         app:pay_later_button_enabled="true"
         app:paypal_button_label="pay"
         app:paypal_button_shape="rectangle"
+        android:layout_centerHorizontal="true"
         app:paypal_button_size="large"
         app:paypal_button_enabled="true" />
+
+    <TextView
+        android:id="@+id/sub_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="When will I be billed?"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/payment_button_container"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/sub_info2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You will be billed for each subscription cycle unless it's cancelled"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginStart="16dp" />
 
 </RelativeLayout>

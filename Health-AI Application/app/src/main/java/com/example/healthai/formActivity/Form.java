@@ -5,12 +5,6 @@ import android.os.Parcelable;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 

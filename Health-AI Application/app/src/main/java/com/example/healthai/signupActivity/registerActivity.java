@@ -17,15 +17,12 @@ import com.example.healthai.R;
 import com.example.healthai.loginActivity.login;
 import com.example.healthai.mainAppActivity.dashboardActivity;
 import com.example.healthai.paypal.paypalActivity;
-import com.example.healthai.paypal.paypal_activity1;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class registerActivity extends AppCompatActivity {
 
@@ -65,7 +62,7 @@ public class registerActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         loginNow.setOnClickListener(view -> {
-            Intent send = new Intent(registerActivity.this, paypal_activity1.class);
+            Intent send = new Intent(registerActivity.this, login.class);
             startActivity(send);
         });
 
