@@ -32,22 +32,17 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             .then((userCredential) => {
                 const user = userCredential.user;
 
-                // First, check if the user is an admin
                 const adminRef = ref(database, 'Admins/' + user.uid);
                 return get(adminRef).then((snapshot) => {
                     if (snapshot.exists()) {
-                        // User is an admin
                         window.location.href = 'admin.html';
                     } else {
-                        // Not an admin, check if they are a professional
                         const professionalRef = ref(database, 'Professionals/' + user.uid);
                         return get(professionalRef).then((snapshot) => {
                             if (snapshot.exists()) {
                                 const lastLoginTime = new Date().toISOString();
-                                // Update the last login time in the Realtime Database
                                 update(professionalRef, { lastLogin: lastLoginTime });
 
-                                // Redirect to the professional's dashboard
                                 window.location.href = 'dashboard.html';
                             } else {
                                 alert('User not found in the database');
