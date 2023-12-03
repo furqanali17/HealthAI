@@ -60,12 +60,7 @@ public class HealthFormActivity2 extends AppCompatActivity {
 //        tiLungCancerHist.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
         tiChronicLung.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
 
-        // disable unnecessary inputs
-        if(!userForm.isDoesDrinkAlcohol()){
-            tiAlcohol.setClickable(false);
-            tiAlcohol.setAlpha(0.5f);
-            alcohol.set(1);
-        }
+
 
         Button send1 = findViewById(R.id.button13);
         send1.setOnClickListener(view -> {

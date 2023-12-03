@@ -91,7 +91,7 @@
           android:id="@+id/textView35"
           android:layout_width="228dp"
           android:layout_height="46dp"
-          android:text="Does your family have a history of cancer?"
+          android:text="Does your family have a history of  colon cancer?"
           android:textSize="18sp" />
 
       <RadioGroup
