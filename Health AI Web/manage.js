@@ -42,7 +42,6 @@ function exportDataset() {
 
     let exportedData = [];
     document.querySelectorAll('#dataset-display div').forEach(div => {
-        // Assuming each div contains JSON string in <pre> tag
         const formJson = div.querySelector('pre').textContent;
         try {
             const formData = JSON.parse(formJson);
@@ -62,5 +61,5 @@ function exportDataset() {
 }
 
 document.getElementById('create-dataset').addEventListener('click', function () {
-    window.location.href = 'new_form.html';
+    alert("New aggregate data set created");
 });
