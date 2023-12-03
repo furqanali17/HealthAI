@@ -65,7 +65,6 @@ header {
 }
 
 main {
-    /*change style with this */
     display: list-item;
     justify-content: start;
     align-items: center;
@@ -219,7 +218,6 @@ footer {
 
 .form-detail-entry h4 {
     margin-right: -25%;
-    /* Spacing between question and answer */
 }
 
 .contact-detail-entry {

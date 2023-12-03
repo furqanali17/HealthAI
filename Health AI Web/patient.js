@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (patientId) {
         loadPatientData(patientId);
     } else {
-        // Handle the case where no patient ID is provided
         console.error('No patient ID provided in URL');
 
     }
@@ -32,7 +31,6 @@ function loadPatientData(patientId) {
 }
 
 function updatePatientDisplay(data) {
-    // Updating patient details
     document.getElementById('patient-name-header').innerText = `Patient: ${data.name}`;
     updateContactDetail('patient-name', data.name);
     updateContactDetail('patient-age', data.age);
@@ -40,8 +38,7 @@ function updatePatientDisplay(data) {
     updateContactDetail('patient-email', data.email);
     updateContactDetail('patient-mobile', data.mobile);
 
-      // Updating insurance details
-      if (data.Insurance_Details) {
+    if (data.Insurance_Details) {
         updateInsuranceDetail('insurance-company', data.Insurance_Details.insuranceCompany);
         updateInsuranceDetail('policy-number', data.Insurance_Details.policyNumber);
         updateInsuranceDetail('group-number', data.Insurance_Details.groupNumber);

@@ -15,8 +15,8 @@ function loadProfileData(user) {
     onValue(professionalRef, (snapshot) => {
         if (snapshot.exists()) {
             const professionalData = snapshot.val();
-            updateProfileDisplay(professionalData); // Update fields with data
-            checkProfileCompletion(); // Then check for completeness
+            updateProfileDisplay(professionalData);
+            checkProfileCompletion();
         } else {
             console.error('Professional data not found');
             document.getElementById('professional-name').innerText = 'Welcome Dr. Name';
@@ -27,32 +27,28 @@ function loadProfileData(user) {
 var profileCompletionPromptShown = false;
 
 function checkProfileCompletion() {
-    // Function to update individual field warning
     function updateFieldWarning(fieldId, isEmpty) {
         const warningElement = document.getElementById(fieldId + '-warning');
         if (isEmpty) {
             warningElement.innerText = 'Please fill this information';
-            warningElement.style.display = 'inline'; // Show warning
+            warningElement.style.display = 'inline';
         } else {
             warningElement.innerText = '';
-            warningElement.style.display = 'none'; // Hide warning
+            warningElement.style.display = 'none';
         }
     }
 
-    // Check each text field and update warning accordingly
     updateFieldWarning('doctor-title', !document.getElementById('doctor-title').value);
     updateFieldWarning('doctor-specialties', !document.getElementById('doctor-specialties').value);
     updateFieldWarning('doctor-mobile', !document.getElementById('doctor-mobile').value);
 
-    // Check and update gender field warning
     const sexDisplayElement = document.getElementById('doctor-sex-display');
-    const isGenderEmpty = sexDisplayElement.style.display === 'none'; // Check if sex field is hidden
+    const isGenderEmpty = sexDisplayElement.style.display === 'none';
     updateFieldWarning('sex', isGenderEmpty);
 }
 
-// Call this function every time a field is updated
 function recheckProfileCompletion() {
-    profileCompletionPromptShown = false;  // Reset the flag when fields are updated
+    profileCompletionPromptShown = false;
     checkProfileCompletion();
 }
 
@@ -65,12 +61,11 @@ function updateProfileDisplay(data) {
     updateField('doctor-mobile', data.mobile, 'Enter Mobile Number');
     updateField('doctor-specialties', data.specialties, 'Enter Specialties');
     updateSexField(data.sex);
-    checkProfileCompletion(); // Check for empty fields after updating UI
+    checkProfileCompletion();
 }
 
 function updateField(fieldId, value, placeholder) {
     const element = document.getElementById(fieldId);
-    // Check if value is not null or undefined, but allow empty string
     element.value = (value !== null && value !== undefined) ? value : '';
     element.placeholder = (value !== null && value !== undefined) ? '' : placeholder;
 }
@@ -125,7 +120,7 @@ function updateProfileField(uid, field, value) {
     const professionalRef = ref(database, `Professionals/${uid}/${fieldMap[field]}`);
     set(professionalRef, value).then(() => {
         console.log(`${fieldMap[field]} updated successfully`);
-        recheckProfileCompletion();  // Call after successful update
+        recheckProfileCompletion();
     }).catch((error) => {
         console.error('Error updating profile:', error);
     });

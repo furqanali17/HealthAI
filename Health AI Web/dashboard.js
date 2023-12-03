@@ -34,7 +34,6 @@ function displayList(node, listElementId, professionalId) {
             snapshot.forEach((childSnapshot) => {
                 const details = childSnapshot.val();
 
-                // Check if the user is assigned to the logged-in professional
                 if (details.assignedProfessionalID === professionalId) {
                     const listItem = createListItem(details, childSnapshot.key);
                     listElement.appendChild(listItem);
@@ -49,7 +48,7 @@ function displayList(node, listElementId, professionalId) {
 function createListItem(details, userId) {
     const listItem = document.createElement('li');
     listItem.classList.add('user-list-item');
-    listItem.style.cursor = 'pointer'; // Make it look clickable
+    listItem.style.cursor = 'pointer';
 
     listItem.innerHTML = `
         <div><strong>Name: </strong> ${details.name}</div>
@@ -59,7 +58,6 @@ function createListItem(details, userId) {
         <div><strong>Email: </strong> ${details.email}</div>
     `;
 
-    // Add click event to redirect to patient.html with patient ID
     listItem.addEventListener('click', function () {
         window.location.href = `patient.html?patientId=${userId}`;
     });
