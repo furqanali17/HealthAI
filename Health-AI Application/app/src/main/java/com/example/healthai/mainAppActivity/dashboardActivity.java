@@ -2,27 +2,20 @@ package com.example.healthai.mainAppActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.healthai.R;
 import com.example.healthai.docBotActivity.docBotActivity;
-import com.example.healthai.fragments.FitnessFragment;
-import com.example.healthai.fragments.GpFragment;
-import com.example.healthai.fragments.UserFragment;
-import com.example.healthai.fragments.predictionFragment;
 import com.example.healthai.loginActivity.login;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+
 
 public class dashboardActivity extends AppCompatActivity implements View.OnClickListener{
     public CardView predictionCard, fitnessCard, gpCard, userCard;
@@ -31,6 +24,7 @@ public class dashboardActivity extends AppCompatActivity implements View.OnClick
     FirebaseAuth auth;
     FirebaseUser user;
     FloatingActionButton docbot;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

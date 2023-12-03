@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class Form implements Parcelable {
+public class form2 implements Parcelable {
 
     // Common
     private int age;
@@ -80,7 +80,7 @@ public class Form implements Parcelable {
     private int mentalHealth;
 
 
-    public Form(){
+    public form2(){
 
     }
 
@@ -271,55 +271,6 @@ public class Form implements Parcelable {
         dest.writeFloat(this.bmi);
         dest.writeInt(this.physicalHealth);
         dest.writeInt(this.mentalHealth);
-    }
-
-    public void readFromParcel(Parcel source) {
-        this.age = source.readInt();
-        this.gender = source.readInt();
-        this.isSmoker = source.readInt();
-        this.doesDrinkAlcohol = source.readInt();
-        this.hasObesity = source.readInt();
-        this.physicalActivity = source.readInt();
-        this.airPollution = source.readInt();
-        this.alcoholUse = source.readInt();
-        this.dustAllergies = source.readInt();
-        this.occupationalHazards = source.readInt();
-        this.geneticRisk = source.readInt();
-        this.chronicLungDisease = source.readInt();
-        this.balancedDiet = source.readInt();
-        this.obesity = source.readInt();
-        this.smoking = source.readInt();
-        this.passiveSmoker = source.readInt();
-        this.chestPain = source.readInt();
-        this.coughing = source.readInt();
-        this.fatigue = source.readInt();
-        this.weightLoss = source.readInt();
-        this.shortnessOfBreath = source.readInt();
-        this.wheezing = source.readInt();
-        this.swallowingDifficulty = source.readInt();
-        this.clubbingFingerNails = source.readInt();
-        this.frequentColds = source.readInt();
-        this.dryCough = source.readInt();
-        this.snoring = source.readInt();
-        this.hadPreviousCancer = source.readInt();
-        this.hadPreviousColonCancer = source.readInt();
-        this.hasFamilyHistory = source.readInt();
-        this.isOldAge = source.readInt();
-        this.hasIDB = source.readInt();
-        this.exercisesRegularly = source.readInt();
-        this.hasHighFatDiet = source.readInt();
-        this.hasHadStroke = source.readInt();
-        this.difficultyWalking = source.readInt();
-        this.hasAsthma = source.readInt();
-        this.hadKidneyDisease = source.readInt();
-        this.hadPreviousSkinCancer = source.readInt();
-        this.diabetic = source.readString();
-        this.generalHealth = source.readString();
-        this.race = source.readString();
-        this.sleepTime = source.readInt();
-        this.bmi = source.readFloat();
-        this.physicalHealth = source.readInt();
-        this.mentalHealth = source.readInt();
     }
 
     public int getAge() {
@@ -690,7 +641,56 @@ public class Form implements Parcelable {
         this.mentalHealth = mentalHealth;
     }
 
-    protected Form(Parcel in) {
+    public void readFromParcel(Parcel source) {
+        this.age = source.readInt();
+        this.gender = source.readInt();
+        this.isSmoker = source.readInt();
+        this.doesDrinkAlcohol = source.readInt();
+        this.hasObesity = source.readInt();
+        this.physicalActivity = source.readInt();
+        this.airPollution = source.readInt();
+        this.alcoholUse = source.readInt();
+        this.dustAllergies = source.readInt();
+        this.occupationalHazards = source.readInt();
+        this.geneticRisk = source.readInt();
+        this.chronicLungDisease = source.readInt();
+        this.balancedDiet = source.readInt();
+        this.obesity = source.readInt();
+        this.smoking = source.readInt();
+        this.passiveSmoker = source.readInt();
+        this.chestPain = source.readInt();
+        this.coughing = source.readInt();
+        this.fatigue = source.readInt();
+        this.weightLoss = source.readInt();
+        this.shortnessOfBreath = source.readInt();
+        this.wheezing = source.readInt();
+        this.swallowingDifficulty = source.readInt();
+        this.clubbingFingerNails = source.readInt();
+        this.frequentColds = source.readInt();
+        this.dryCough = source.readInt();
+        this.snoring = source.readInt();
+        this.hadPreviousCancer = source.readInt();
+        this.hadPreviousColonCancer = source.readInt();
+        this.hasFamilyHistory = source.readInt();
+        this.isOldAge = source.readInt();
+        this.hasIDB = source.readInt();
+        this.exercisesRegularly = source.readInt();
+        this.hasHighFatDiet = source.readInt();
+        this.hasHadStroke = source.readInt();
+        this.difficultyWalking = source.readInt();
+        this.hasAsthma = source.readInt();
+        this.hadKidneyDisease = source.readInt();
+        this.hadPreviousSkinCancer = source.readInt();
+        this.diabetic = source.readString();
+        this.generalHealth = source.readString();
+        this.race = source.readString();
+        this.sleepTime = source.readInt();
+        this.bmi = source.readFloat();
+        this.physicalHealth = source.readInt();
+        this.mentalHealth = source.readInt();
+    }
+
+    protected form2(Parcel in) {
         this.age = in.readInt();
         this.gender = in.readInt();
         this.isSmoker = in.readInt();

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".GP.gp_details_activity3">
 
     <TextView
@@ -12,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
         android:fontFamily="@font/acme"
@@ -89,21 +89,79 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/call_textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/gp_cardView"
-        android:text="Do you want to call your gp?" />
-    <Button
-        android:id="@+id/callGP_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/call_textView"
-        android:layout_centerHorizontal="true"
-        android:text="Call GP" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/call_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call your gp?" />
+
+            <Button
+                android:id="@+id/callGP_Btn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Call GP"
+                android:layout_marginStart="65dp"
+                android:drawableLeft="@drawable/call"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/change_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change your gp?" />
+
+            <Button
+                android:id="@+id/changeGp_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change GP"
+                android:layout_marginStart="40dp"
+                android:drawableLeft="@drawable/edit"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/delete_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete your gp?" />
+
+            <Button
+                android:id="@+id/deleteGp_btn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Delete GP"
+                android:layout_marginStart="50dp"
+                android:drawableLeft="@drawable/delete"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goBack"

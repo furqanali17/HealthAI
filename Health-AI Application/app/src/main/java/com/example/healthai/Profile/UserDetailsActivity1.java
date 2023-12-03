@@ -49,8 +49,6 @@ public class UserDetailsActivity1 extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        /*assert user != null;
-        String email = user.getEmail().replace('.', ',');*/
         assert user != null;
         String uid = user.getUid();
 

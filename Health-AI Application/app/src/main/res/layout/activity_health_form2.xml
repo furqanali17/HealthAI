@@ -32,11 +32,10 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
-        android:layout_marginBottom="15sp"
-        android:layout_marginStart="15sp"
-        android:layout_marginEnd="15sp"
+        android:layout_height="600dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -48,6 +47,7 @@
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="236dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="52dp"
                 android:text="I frequently consume alcohol"
                 android:textSize="18sp" />
@@ -55,12 +55,14 @@
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="236dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="52dp"
                 android:text="I am often exposed to air pollution"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView11"
+                android:layout_marginTop="5dp"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
                 android:text="I frequently smoke"
@@ -69,6 +71,7 @@
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="236dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="52dp"
                 android:text="Im at risk of occupational hazards"
                 android:textSize="18sp" />
@@ -82,6 +85,7 @@
 
             <TextView
                 android:id="@+id/textView23"
+                android:layout_marginTop="5dp"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
                 android:text="I suffer from obesity"
@@ -89,6 +93,7 @@
 
             <TextView
                 android:id="@+id/textView25"
+                android:layout_marginTop="5dp"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
                 android:text="I'm frequently exposed to passive smoke"
@@ -96,6 +101,7 @@
 
             <TextView
                 android:id="@+id/textView9"
+                android:layout_marginTop="5dp"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
                 android:text="I suffer from dust allegies"
@@ -103,6 +109,7 @@
 
             <TextView
                 android:id="@+id/textView18"
+                android:layout_marginTop="5dp"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
                 android:text="I have a family history of lung cancer"
@@ -112,133 +119,145 @@
                 android:id="@+id/textView20"
                 android:layout_width="236dp"
                 android:layout_height="52dp"
+                android:layout_marginTop="5dp"
                 android:text="I suffer from chronic lung disease"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="numberDecimal"
                     android:id="@+id/tiFormConsumeAlcohol"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormAirPolution"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormFrequentlySmoke"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormOccupationalHazards"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormBalancedDiet"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormObesity"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormPassiveSmoke"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormDustAllergies"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormGeneticRisk"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="125dp"
-                android:layout_height="51dp">
+                android:layout_height="169dp"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormChronicLungDisease"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </LinearLayout>

@@ -32,13 +32,16 @@ public class HealthFormActivity6 extends AppCompatActivity {
         AtomicInteger avgSleepTime = new AtomicInteger();
         AtomicInteger bmi = new AtomicInteger();
         AtomicInteger physicalHealthRating = new AtomicInteger();
+        AtomicInteger mentalHealthRating = new AtomicInteger();
+
 
         RadioGroup rgDiabetic = findViewById(R.id.rgFormDiabetic);
         RadioGroup rgGeneralHealth = findViewById(R.id.rgFormGeneralHealth);
-        TextInputEditText tiRace = findViewById(R.id.tiFormRace);
+        RadioGroup rgRace = findViewById(R.id.rgFormRace);
         TextInputEditText tiAvgSleep = findViewById(R.id.tiFormAverageSleepTime);
         TextInputEditText tiBmi = findViewById(R.id.tiFormBMI);
         TextInputEditText tiPhysHealthRating = findViewById(R.id.tiFormPhysicalHealthRating);
+        TextInputEditText tiMentalHealth = findViewById(R.id.tiFormMentalHealthRating);
 
 
         Button send1 = findViewById(R.id.button13);
@@ -47,13 +50,8 @@ public class HealthFormActivity6 extends AppCompatActivity {
             boolean formComplete = true;
 
             formComplete = Form.validateRGInput(rgDiabetic,diabetic,formComplete);
-            formComplete = Form.validateRGInput(rgGeneralHealth,generalHealth,formComplete)
-            ;
-            if (!tiRace.getText().toString().matches("") && formComplete)
-                race.set(tiRace.getText().toString());
-            else
-                formComplete = false;
-
+            formComplete = Form.validateRGInput(rgGeneralHealth,generalHealth,formComplete);
+            formComplete = Form.validateRGInput(rgRace,race,formComplete);
             if (!tiAvgSleep.getText().toString().matches("") && formComplete)
                 avgSleepTime.set(Integer.parseInt(tiAvgSleep.getText().toString()));
             else
@@ -69,10 +67,15 @@ public class HealthFormActivity6 extends AppCompatActivity {
             else
                 formComplete = false;
 
+            if (!tiMentalHealth.getText().toString().matches("") && formComplete)
+                mentalHealthRating.set(Integer.parseInt(tiMentalHealth.getText().toString()));
+            else
+                formComplete = false;
+
             if (formComplete){
                 Intent send11 = new Intent(HealthFormActivity6.this, formCompleted.class);
                 userForm.page6Input(diabetic.get(),generalHealth.get(),race.get(),
-                        avgSleepTime.get(),bmi.get(),physicalHealthRating.get());
+                        avgSleepTime.get(),bmi.get(),physicalHealthRating.get(),mentalHealthRating.get());
                 send11.putExtra("form",userForm);
                 startActivity(send11);
             }            else

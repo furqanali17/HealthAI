@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class insuranceDetailsActivity2 extends AppCompatActivity {
 
-    Button callInsurance_Btn;
+    Button callInsurance_Btn, changeInsurance_Btn;
     String InsurancePhone;
     TextView insuranceCompanyTextView, insuranceYearTextView, policyNumberTextView, typeOfInsuranceTextView,
             subscriberIDTextView, groupNumberTextView, insurancePhoneTextView;
@@ -47,6 +47,7 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
         subscriberIDTextView = findViewById(R.id.subscriberIDTextView);
         groupNumberTextView = findViewById(R.id.groupNumberTextView);
         insurancePhoneTextView = findViewById(R.id.insurancePhoneTextView);
+        changeInsurance_Btn = findViewById(R.id.changeInsurance_Btn);
 
         getInsuranceInfo();
         callInsurance_Btn = findViewById(R.id.callInsurance_Btn);
@@ -55,6 +56,11 @@ public class insuranceDetailsActivity2 extends AppCompatActivity {
         goBack = findViewById(R.id.goBack);
         goBack.setOnClickListener(v -> {
             Intent intent = new Intent(insuranceDetailsActivity2.this, dashboardActivity.class);
+            startActivity(intent);
+        });
+
+        changeInsurance_Btn.setOnClickListener(v -> {
+            Intent intent = new Intent(insuranceDetailsActivity2.this, insuranceDetailsActivity.class);
             startActivity(intent);
         });
     }

@@ -54,6 +54,9 @@ public class gp_details_activity2 extends AppCompatActivity implements RecyclerV
                 gpList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     gpDetails gp = snapshot.getValue(gpDetails.class);
+                    if (gp != null) {
+                        gp.setId(snapshot.getKey());
+                    }
                     gpList.add(gp);
                 }
 
@@ -80,18 +83,34 @@ public class gp_details_activity2 extends AppCompatActivity implements RecyclerV
         assert user != null;
         String uid = user.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
-        databaseReference.child("Professionals").setValue(clickedGp)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+        String gpId = clickedGp != null ? clickedGp.getId() : null;
+
+        if (gpId != null) {
+            databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+            // Create a child node under "Professionals" with the ID of the selected GP
+            databaseReference.child("Professionals").setValue(clickedGp)
+                    .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(gp_details_activity2.this, "Successfully Updated", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(gp_details_activity2.this, "Failed to Update", Toast.LENGTH_LONG).show();
                         }
-                    }
-                });
-    }
+                    });
 
+            // Add the GP ID to the user's attributes as "assignedProfessionalID"
+            databaseReference.child("assignedProfessionalID").setValue(gpId)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(gp_details_activity2.this, "Successfully Assigned", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(gp_details_activity2.this, "Failed to Assign", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        } else {
+            Log.e("GP_DETAILS_ACTIVITY", "GP ID is null");
+        }
+
+
+    }
 }

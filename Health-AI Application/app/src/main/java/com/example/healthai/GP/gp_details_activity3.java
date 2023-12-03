@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class gp_details_activity3 extends AppCompatActivity {
-    Button callGP_Btn;
+    Button callGP_Btn, changeGp_btn, deleteGp_btn;
     String gpMobile, gpFullName, gpSex, gpSpecialties;
     TextView gpNameTextView, gpSexTextView, gpMobileTextView, gpSpecialtiesTextView;
     FloatingActionButton goBack;
@@ -37,6 +37,8 @@ public class gp_details_activity3 extends AppCompatActivity {
         gpSexTextView = findViewById(R.id.gp_sex);
         gpMobileTextView = findViewById(R.id.gp_mobile);
         gpSpecialtiesTextView = findViewById(R.id.gpSpecialties);
+        changeGp_btn = findViewById(R.id.changeGp_btn);
+        deleteGp_btn = findViewById(R.id.deleteGp_btn);
 
         getGpInfo();
 
@@ -49,6 +51,14 @@ public class gp_details_activity3 extends AppCompatActivity {
             startActivity(intent);
         });
 
+        changeGp_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(gp_details_activity3.this, gp_details_activity1.class);
+            startActivity(intent);
+        });
+
+        deleteGp_btn.setOnClickListener(v -> {
+           deleteGP();
+        });
     }
 
     private void getGpInfo() {
@@ -103,5 +113,25 @@ public class gp_details_activity3 extends AppCompatActivity {
         } else {
             Toast.makeText(gp_details_activity3.this, "GP mobile number not available", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void deleteGP(){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        assert user != null;
+        String uid = user.getUid();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+        databaseReference.child("Professionals").removeValue().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(gp_details_activity3.this, "GP deleted successfully", Toast.LENGTH_SHORT).show();
+                // Redirect to another activity after successful deletion
+                Intent intent = new Intent(gp_details_activity3.this, dashboardActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(gp_details_activity3.this, "Failed to delete GP", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

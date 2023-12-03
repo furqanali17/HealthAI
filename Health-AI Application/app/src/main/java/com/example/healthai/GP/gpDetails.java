@@ -8,7 +8,8 @@ public class gpDetails implements Serializable {
     public gpDetails() {
     }
 
-    public gpDetails(String fullname, String sex, String mobile, String specialties) {
+    public gpDetails(String id, String fullname, String sex, String mobile, String specialties) {
+        this.id = id;
         this.fullname = fullname;
         this.sex = sex;
         this.mobile = mobile;

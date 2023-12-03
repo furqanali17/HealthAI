@@ -29,9 +29,10 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -114,20 +115,21 @@
 
         <LinearLayout
             android:layout_width="130dp"
-            android:layout_height="572dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout38"
                 android:layout_width="125dp"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:layout_marginBottom="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormSnore"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -138,9 +140,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormFrequentColds"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-9" />
+                    android:layout_height="50dp"
+                    android:hint="1-9"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -151,78 +153,78 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormDryCough"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-9" />
+                    android:layout_height="50dp"
+                    android:hint="1-9"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout41"
                 android:layout_width="125dp"
-                android:inputType="numberDecimal"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:inputType="numberDecimal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormChestPain"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:hint="1-9" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout37"
                 android:layout_width="125dp"
-                android:inputType="numberDecimal"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:inputType="numberDecimal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormSwallowingDifficulty"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout26"
                 android:layout_width="125dp"
-                android:inputType="numberDecimal"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:inputType="numberDecimal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormShortnessOfBreath"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout40"
                 android:layout_width="125dp"
-                android:inputType="numberDecimal"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:inputType="numberDecimal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormWeezing"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-8" />
+                    android:layout_height="50dp"
+                    android:hint="1-8"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout27"
                 android:layout_width="125dp"
-                android:inputType="numberDecimal"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:inputType="numberDecimal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormWeightLoss"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -233,9 +235,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormFatigue"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-9" />
+                    android:layout_height="50dp"
+                    android:hint="1-9"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -246,23 +248,26 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormClubbingOfFingerNails"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout25"
                 android:layout_width="125dp"
-                android:layout_height="51dp">
+                android:layout_height="51dp"
+                android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormCoughing"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"
-                    android:hint="1-7" />
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="1-7"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
 
     </LinearLayout>
