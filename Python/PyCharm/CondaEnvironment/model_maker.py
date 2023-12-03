@@ -4,7 +4,6 @@ import pandas as pd
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-print(tf.__version__)
 
 def split_features(columns):
     feature_columns = []
@@ -68,6 +67,41 @@ def make_model(dataset, features, label, split_percentage=0.8, n_classes=2):
     return classifier, evaluation_result
 
 
+def make_save_input_fn(feature_columns):
+    return tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(feature_columns))
+
+
+def get_columns():
+    CC_DATASET_COLS = ['hasColonCancer', 'hadPreviousCancer', 'hadPreviousColonCancer', 'hasFamilyHistory',
+                       'hadRadiationTherapy', 'isOldAge', 'hasIBD', 'hasObesity', 'isSmoker', 'isDrinker',
+                       'exercisesRegularly', 'hasHighFatDiet']
+    CC_FEATURES = list(CC_DATASET_COLS)
+    CC_FEATURES.remove('hasColonCancer')
+
+    HD_DATASET_COLS = ['HeartDisease', 'BMI', 'PhysicalHealth', 'MentalHealth', 'SleepTime', 'Smoking',
+                       'AlcoholDrinking', 'Stroke', 'DiffWalking', 'Sex', 'AgeCategory',
+                       'Race', 'Diabetic', 'PhysicalActivity', 'GenHealth', 'Asthma', 'KidneyDisease', 'SkinCancer']
+    HD_FEATURES = list(HD_DATASET_COLS)
+    HD_FEATURES.remove('HeartDisease')
+
+    LC_DATASET_COLS = ['Level', 'Age', 'Gender', 'AirPollution', 'AlcoholUse', 'DustAllergy', 'OccupationalHazards',
+                       'GeneticRisk', 'ChronicLungDisease', 'BalancedDiet', 'Obesity', 'Smoking', 'PassiveSmoker',
+                       'ChestPain', 'CoughingofBlood', 'Fatigue', 'WeightLoss', 'ShortnessofBreath', 'Wheezing',
+                       'SwallowingDifficulty', 'ClubbingofFingerNails', 'FrequentCold', 'DryCough', 'Snoring']
+    LC_FEATURES = list(LC_DATASET_COLS)
+    LC_FEATURES.remove('Level')
+
+    return CC_FEATURES, HD_FEATURES, LC_FEATURES
+
+
+def load_datasets():
+    cc_dataset = pd.read_csv("cc_dataset.csv")
+    hd_dataset = pd.read_csv("hd_dataset.csv")
+    lc_dataset = pd.read_csv("lc_dataset.csv")
+
+    return cc_dataset, hd_dataset, lc_dataset
+
+
 if __name__ == '__main__':
     cc_dataset = pd.read_csv("cc_dataset.csv")
     CC_DATASET_COLS = ['hasColonCancer', 'hadPreviousCancer', 'hadPreviousColonCancer', 'hasFamilyHistory',
@@ -90,45 +124,69 @@ if __name__ == '__main__':
     LC_FEATURES = list(LC_DATASET_COLS)
     LC_FEATURES.remove('Level')
 
-    # Colon Cancer Dataset
-    cc_ftr_cols = split_features(CC_FEATURES)
-    cc_classifier, cc_evaluation_result= make_model(cc_dataset, cc_ftr_cols, 'hasColonCancer')
-    print('\nCC test set accuracy: {accuracy:0.3f}\n'.format(**cc_evaluation_result))
+    # # Colon Cancer Dataset
+    # cc_ftr_cols = split_features(CC_FEATURES)
+    # cc_classifier, cc_evaluation_result = make_model(cc_dataset, cc_ftr_cols, 'hasColonCancer')
+    # print('\nCC test set accuracy: {accuracy:0.3f}\n'.format(**cc_evaluation_result))
+    #
+    # # Heart Disease Dataset
+    # hd_ftr_cols = split_features(HD_FEATURES)
+    # hd_classifier, hd_evaluation_result = make_model(hd_dataset, hd_ftr_cols, 'HeartDisease')
+    # print('\nHD test set accuracy: {accuracy:0.3f}\n'.format(**hd_evaluation_result))
+    #
+    # # Liver Cancer Dataset
+    # lc_ftr_cols = split_features(LC_FEATURES)
+    # lc_classifier, lc_evaluation_result = make_model(lc_dataset, lc_ftr_cols, 'Level', n_classes=3)
+    # print('\nLC test set accuracy: {accuracy:0.3f}\n'.format(**lc_evaluation_result))
 
-    # Heart Disease Dataset
-    hd_ftr_cols = split_features(HD_FEATURES)
-    hd_classifier, hd_evaluation_result = make_model(hd_dataset, hd_ftr_cols, 'HeartDisease')
-    print('\nHD test set accuracy: {accuracy:0.3f}\n'.format(**hd_evaluation_result))
+    # # Predict CC
+    # cc_outcome, cc_probability = predict(CC_FEATURES, cc_classifier)
+    # print(f'Model predicts: "{cc_outcome}" ({cc_probability * 100:.1f}%)')
+    #
+    # # Predict HD
+    # hd_outcome, hd_probability = predict(HD_FEATURES, hd_classifier)
+    # print(f'Model predicts: "{hd_outcome}" ({hd_probability * 100:.1f}%)')
+    #
+    # # Predict LC
+    # lc_outcome, lc_probability = predict(LC_FEATURES, lc_classifier)
+    # print(f'Model predicts: "{lc_outcome}" ({lc_probability * 100:.1f}%)')
 
-    # Liver Cancer Dataset
-    lc_ftr_cols = split_features(LC_FEATURES)
-    lc_classifier, lc_evaluation_result = make_model(lc_dataset, lc_ftr_cols, 'Level', n_classes=3)
-    print('\nLC test set accuracy: {accuracy:0.3f}\n'.format(**lc_evaluation_result))
+    # Save Models
+    # MODELS_DIRECTORY = 'models'
+    # shutil.rmtree(MODELS_DIRECTORY, ignore_errors=True)
+    #
+    # cc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(cc_ftr_cols))
+    # hd_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(hd_ftr_cols))
+    # lc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(lc_ftr_cols))
+    #
+    # cc_path = cc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "cc_model"), cc_save_input_fn)
+    # hd_path = hd_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "hd_model"), hd_save_input_fn)
+    # lc_path = lc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "lc_model"), lc_save_input_fn)
 
-    # Predict CC
+    # Load Models
+    cc_classifier = tf.saved_model.load('models/cc_model/1701368367')
     cc_outcome, cc_probability = predict(CC_FEATURES, cc_classifier)
     print(f'Model predicts: "{cc_outcome}" ({cc_probability * 100:.1f}%)')
 
-    # Predict HD
-    hd_outcome, hd_probability = predict(HD_FEATURES, hd_classifier)
-    print(f'Model predicts: "{hd_outcome}" ({hd_probability * 100:.1f}%)')
+    # cc_converter = tf.lite.TFLiteConverter.from_saved_model(cc_path)
+    #
+    # cc_converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
+    # cc_converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
+    # cc_converter.allow_custom_ops = True
+    #
+    # cc_tflite_model = cc_converter.convert()
 
-    # Predict LC
-    lc_outcome, lc_probability = predict(LC_FEATURES, lc_classifier)
-    print(f'Model predicts: "{lc_outcome}" ({lc_probability * 100:.1f}%)')
+    # concrete_function = cc_classifier.signatures['serving_default']
 
-    # Save Models
-    MODELS_DIRECTORY = 'models'
-    shutil.rmtree(MODELS_DIRECTORY, ignore_errors=True)
-    cc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(cc_ftr_cols))
-    hd_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(hd_ftr_cols))
-    lc_save_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(tf.feature_column.make_parse_example_spec(lc_ftr_cols))
+    # cc_converter = tf.lite.TFLiteConverter.from_concrete_functions([concrete_function])
+    #
+    # print(cc_classifier.signatures.keys())
+    # cc_converter.optimizations = [tf.lite.Optimize.DEFAULT]
+    # cc_converter.experimental_new_converter = True
+    #
+    # cc_tflite_model = cc_converter.convert()
 
-    cc_path = cc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "cc_model"), cc_save_input_fn)
-    hd_path = hd_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "hd_model"), hd_save_input_fn)
-    lc_path = lc_classifier.export_saved_model(os.path.join(MODELS_DIRECTORY, "lc_model"), lc_save_input_fn)
+    # with open('models/cc_model.tflite', 'wb') as f:
+    #     f.write(cc_tflite_model)
 
-    # Load Models
-    cc_classifier = tf.saved_model.load(cc_path)
-    hd_classifier = tf.saved_model.load(hd_path)
-    lc_classifier = tf.saved_model.load(lc_path)
+    # print(cc_tflite_model)
