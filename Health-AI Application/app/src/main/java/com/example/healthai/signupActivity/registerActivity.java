@@ -1,5 +1,6 @@
 package com.example.healthai.signupActivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.healthai.R;
 import com.example.healthai.loginActivity.login;
 import com.example.healthai.mainAppActivity.dashboardActivity;
+import com.example.healthai.paypal.paypalActivity;
 import com.example.healthai.paypal.paypal_activity1;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
@@ -34,6 +36,8 @@ public class registerActivity extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseDatabase db;
     DatabaseReference reference;
+    private static final int PayPalRequestCode = 123;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -60,13 +64,9 @@ public class registerActivity extends AppCompatActivity {
         loginNow = findViewById(R.id.loginNow);
         progressBar = findViewById(R.id.progressBar);
 
-        loginNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent send = new Intent(registerActivity.this, paypal_activity1.class);
-                startActivity(send);
-                finish();
-            }
+        loginNow.setOnClickListener(view -> {
+            Intent send = new Intent(registerActivity.this, paypal_activity1.class);
+            startActivity(send);
         });
 
         buttonReg = findViewById(R.id.registerButton);
@@ -87,22 +87,42 @@ public class registerActivity extends AppCompatActivity {
             }
 
 
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        progressBar.setVisibility(View.GONE);
-                        if (task.isSuccessful()) {
-                            Toast.makeText(registerActivity.this, "Authentication Created.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(registerActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-            Intent intent = new Intent(registerActivity.this, paypal_activity1.class);
-            startActivity(intent);
+            // Move createUserWithEmailAndPassword logic inside onActivityResult
+            Intent intent = new Intent(registerActivity.this, paypalActivity.class);
+            startActivityForResult(intent, PayPalRequestCode);
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PayPalRequestCode) {
+            if (resultCode == RESULT_OK) {
+                // Payment was successful, now create the user account
+                String email = String.valueOf(editTextEmail.getText());
+                String password = String.valueOf(editTextPassword.getText());
+
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            progressBar.setVisibility(View.GONE);
+                            if (task.isSuccessful()) {
+                                Toast.makeText(registerActivity.this, "Authentication Created.",
+                                        Toast.LENGTH_SHORT).show();
+
+                                Intent dashboardIntent = new Intent(registerActivity.this, dashboardActivity.class);
+                                startActivity(dashboardIntent);
+                                finish();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(registerActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } else {
+                // Payment failed or was canceled
+                Toast.makeText(this, "Payment failed or canceled", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

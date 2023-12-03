@@ -30,6 +30,7 @@ public class HealthFormActivity4 extends AppCompatActivity {
         AtomicBoolean geneticRisk = new AtomicBoolean();
         AtomicBoolean prevColonCancer = new AtomicBoolean();
         AtomicBoolean prevCancer = new AtomicBoolean();
+        AtomicBoolean prevRadiation = new AtomicBoolean();
 
         RadioGroup rgHighFatDiet = findViewById(R.id.rgFormHighFatDiet);
 
@@ -37,6 +38,7 @@ public class HealthFormActivity4 extends AppCompatActivity {
         RadioGroup rgFamilyHisCancer = findViewById(R.id.rgFormFamilyCancerHistory);
         RadioGroup rgPrevColonCancer = findViewById(R.id.rgFormPrevColonCancer);
         RadioGroup rgPrevCancer = findViewById(R.id.rgFormPreviousCancer);
+        RadioGroup rgPrevRadiationTherapy = findViewById(R.id.rgPrevRadiationTherapy);
         Button send1 = findViewById(R.id.btnFormNext4);
 
         send1.setOnClickListener(view -> {
@@ -49,6 +51,7 @@ public class HealthFormActivity4 extends AppCompatActivity {
             formComplete = Form.validateRGInput(rgFamilyHisCancer,geneticRisk,formComplete);
             formComplete = Form.validateRGInput(rgPrevColonCancer,prevColonCancer,formComplete);
             formComplete = Form.validateRGInput(rgPrevCancer,prevCancer,formComplete);
+            formComplete = Form.validateRGInput(rgPrevRadiationTherapy,prevRadiation,formComplete);
 
             if(formComplete){
                 Intent send11 = new Intent(HealthFormActivity4.this, HealthFormActivity5.class);

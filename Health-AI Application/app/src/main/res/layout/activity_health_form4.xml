@@ -8,15 +8,15 @@
 
   <LinearLayout
       android:id="@+id/linearLayout3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="367dp"
+      android:layout_height="588dp"
       android:orientation="vertical"
       app:layout_constraintBottom_toTopOf="@+id/btnFormNext4"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintHorizontal_bias="0.431"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView24"
-      app:layout_constraintVertical_bias="0.5">
+      app:layout_constraintVertical_bias="0.122">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:orientation="vertical">
 
       <TextView
-          android:id="@+id/textView35"
+          android:id="@+id/fatDietTextView"
           android:layout_width="wrap_content"
           android:layout_height="46dp"
           android:text="Do you have a high fat diet?"
@@ -148,7 +148,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="223dp"
         android:orientation="vertical">
 
       <TextView
@@ -176,6 +176,32 @@
             android:layout_height="wrap_content"
             android:text="No" />
       </RadioGroup>
+
+      <TextView
+          android:id="@+id/radTherapyTextView"
+          android:layout_width="228dp"
+          android:layout_height="46dp"
+          android:text="Have you previously had radiation therapy?"
+          android:textSize="18sp" />
+
+      <RadioGroup
+          android:id="@+id/rgPrevRadiationTherapy"
+          android:layout_width="169dp"
+          android:layout_height="44dp"
+          android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbPrevRadiationTherapyYes"
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/rbPrevRadiationTherapyNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No" />
+      </RadioGroup>
     </LinearLayout>
   </LinearLayout>
 
@@ -195,22 +221,13 @@
       android:id="@+id/textView24"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="37dp"
       android:layout_marginTop="16dp"
       android:fontFamily="@font/acme"
       android:text="HealthAI Form"
       android:textSize="24sp"
       android:textStyle="bold"
-      app:layout_constraintStart_toEndOf="@+id/btnFormBackPage4"
       app:layout_constraintTop_toTopOf="parent"
-      tools:ignore="MissingConstraints" />
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="127dp" />
 
-  <Button
-      android:id="@+id/btnFormBackPage4"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="2dp"
-      android:text="Back"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

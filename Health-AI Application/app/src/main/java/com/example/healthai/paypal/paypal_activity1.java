@@ -49,7 +49,7 @@ public class paypal_activity1 extends AppCompatActivity {
     }
 
     private void makePayment() {
-        PayPalPayment payment = new PayPalPayment(new BigDecimal("10.0"), "USD", "Test payment",
+        PayPalPayment payment = new PayPalPayment(new BigDecimal("10.0"), "USD", "Test payment/month",
                 PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(this, PaymentActivity.class);
@@ -71,14 +71,19 @@ public class paypal_activity1 extends AppCompatActivity {
 
                     // Handle successful payment
                     Toast.makeText(this, "Payment successful. Payment ID: " + paymentId, Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
                 }
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle canceled payment
                 Toast.makeText(this, "Payment canceled.", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_CANCELED);
             } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
                 // Invalid payment or configuration
                 Toast.makeText(this, "Invalid payment or configuration.", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_CANCELED);
             }
+
+            finish();
         }
     }
 

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".paypal.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,24 +14,26 @@
         android:roundIcon="@mipmap/healthai_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthAI"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".paypal.paypalActivity"
+            android:exported="false" />
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
+
         <activity android:name=".formActivity.HealthFormActivity4" />
         <activity android:name=".formActivity.HealthFormActivity5" />
         <activity android:name=".formActivity.HealthFormActivity6" />
-
         <activity android:name=".docBotActivity.docBotActivity" />
-
         <activity
             android:name=".paypal.paypal_activity1"
             android:exported="false" />
         <activity
             android:name=".fragments.UserFragment"
-            android:label="UserFragment"
-            android:exported="true">
-        </activity>
+            android:exported="true"
+            android:label="UserFragment" />
         <activity
             android:name=".Insurance.insuranceDetailsActivity2"
             android:exported="false" />
