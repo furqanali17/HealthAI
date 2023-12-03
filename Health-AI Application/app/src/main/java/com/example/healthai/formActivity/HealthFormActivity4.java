@@ -55,7 +55,7 @@ public class HealthFormActivity4 extends AppCompatActivity {
 
             if(formComplete){
                 Intent send11 = new Intent(HealthFormActivity4.this, HealthFormActivity5.class);
-                userForm.page4Input(highFatDiet.get(),ibd.get(),geneticRisk.get(),prevColonCancer.get(),prevCancer.get());
+                userForm.page4Input(highFatDiet.get(),ibd.get(),geneticRisk.get(),prevColonCancer.get(),prevCancer.get(),prevRadiation.get());
                 send11.putExtra("form",userForm);
                 startActivity(send11);
             }else

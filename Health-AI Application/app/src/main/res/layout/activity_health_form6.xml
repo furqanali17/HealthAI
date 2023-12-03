@@ -128,50 +128,12 @@
                 android:text="Race "
                 android:textSize="18sp" />
 
-            <RadioGroup
-                android:id="@+id/rgFormRace"
+            <Spinner
+                android:id="@+id/spRace"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:orientation="vertical">
+                android:layout_height="50sp">
 
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="White" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="American Indian/Alaskan Native" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Black" />
-
-
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Asian" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Other" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hispanic" />
-
-            </RadioGroup>
+            </Spinner>
         </LinearLayout>
 
         <LinearLayout

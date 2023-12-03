@@ -33,6 +33,15 @@ public class Form implements Parcelable {
     private int occupationalHazards; //
     private int geneticRisk; // cancer?
     private int chronicLungDisease; //
+
+    public int getHadRadiationTherapy() {
+        return hadRadiationTherapy;
+    }
+
+    public void setHadRadiationTherapy(int hadRadiationTherapy) {
+        this.hadRadiationTherapy = hadRadiationTherapy;
+    }
+
     private int balancedDiet; //
     private int obesity; //
     private int  smoking; //
@@ -60,10 +69,7 @@ public class Form implements Parcelable {
     private int exercisesRegularly; // derived from physical activity common
     private int hasHighFatDiet;
 
-    // Dataset3
-    // commons: smoker, drinker, age,  activity
-    // common derived: sex
-
+    private int hadRadiationTherapy;
     private int hasHadStroke;
     private int difficultyWalking;
     private int hasAsthma;
@@ -83,6 +89,124 @@ public class Form implements Parcelable {
     public Form(){
 
     }
+
+    protected Form(Parcel in) {
+        age = in.readInt();
+        gender = in.readInt();
+        isSmoker = in.readInt();
+        doesDrinkAlcohol = in.readInt();
+        hasObesity = in.readInt();
+        physicalActivity = in.readInt();
+        airPollution = in.readInt();
+        alcoholUse = in.readInt();
+        dustAllergies = in.readInt();
+        occupationalHazards = in.readInt();
+        geneticRisk = in.readInt();
+        chronicLungDisease = in.readInt();
+        balancedDiet = in.readInt();
+        obesity = in.readInt();
+        smoking = in.readInt();
+        passiveSmoker = in.readInt();
+        chestPain = in.readInt();
+        coughing = in.readInt();
+        fatigue = in.readInt();
+        weightLoss = in.readInt();
+        shortnessOfBreath = in.readInt();
+        wheezing = in.readInt();
+        swallowingDifficulty = in.readInt();
+        clubbingFingerNails = in.readInt();
+        frequentColds = in.readInt();
+        dryCough = in.readInt();
+        snoring = in.readInt();
+        hadPreviousCancer = in.readInt();
+        hadPreviousColonCancer = in.readInt();
+        hasFamilyHistory = in.readInt();
+        isOldAge = in.readInt();
+        hasIDB = in.readInt();
+        exercisesRegularly = in.readInt();
+        hasHighFatDiet = in.readInt();
+        hadRadiationTherapy = in.readInt();
+        hasHadStroke = in.readInt();
+        difficultyWalking = in.readInt();
+        hasAsthma = in.readInt();
+        hadKidneyDisease = in.readInt();
+        hadPreviousSkinCancer = in.readInt();
+        diabetic = in.readString();
+        generalHealth = in.readString();
+        race = in.readString();
+        sleepTime = in.readInt();
+        bmi = in.readFloat();
+        physicalHealth = in.readInt();
+        mentalHealth = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(age);
+        dest.writeInt(gender);
+        dest.writeInt(isSmoker);
+        dest.writeInt(doesDrinkAlcohol);
+        dest.writeInt(hasObesity);
+        dest.writeInt(physicalActivity);
+        dest.writeInt(airPollution);
+        dest.writeInt(alcoholUse);
+        dest.writeInt(dustAllergies);
+        dest.writeInt(occupationalHazards);
+        dest.writeInt(geneticRisk);
+        dest.writeInt(chronicLungDisease);
+        dest.writeInt(balancedDiet);
+        dest.writeInt(obesity);
+        dest.writeInt(smoking);
+        dest.writeInt(passiveSmoker);
+        dest.writeInt(chestPain);
+        dest.writeInt(coughing);
+        dest.writeInt(fatigue);
+        dest.writeInt(weightLoss);
+        dest.writeInt(shortnessOfBreath);
+        dest.writeInt(wheezing);
+        dest.writeInt(swallowingDifficulty);
+        dest.writeInt(clubbingFingerNails);
+        dest.writeInt(frequentColds);
+        dest.writeInt(dryCough);
+        dest.writeInt(snoring);
+        dest.writeInt(hadPreviousCancer);
+        dest.writeInt(hadPreviousColonCancer);
+        dest.writeInt(hasFamilyHistory);
+        dest.writeInt(isOldAge);
+        dest.writeInt(hasIDB);
+        dest.writeInt(exercisesRegularly);
+        dest.writeInt(hasHighFatDiet);
+        dest.writeInt(hadRadiationTherapy);
+        dest.writeInt(hasHadStroke);
+        dest.writeInt(difficultyWalking);
+        dest.writeInt(hasAsthma);
+        dest.writeInt(hadKidneyDisease);
+        dest.writeInt(hadPreviousSkinCancer);
+        dest.writeString(diabetic);
+        dest.writeString(generalHealth);
+        dest.writeString(race);
+        dest.writeInt(sleepTime);
+        dest.writeFloat(bmi);
+        dest.writeInt(physicalHealth);
+        dest.writeInt(mentalHealth);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Form> CREATOR = new Creator<Form>() {
+        @Override
+        public Form createFromParcel(Parcel in) {
+            return new Form(in);
+        }
+
+        @Override
+        public Form[] newArray(int size) {
+            return new Form[size];
+        }
+    };
 
     public void page1Input(int age, boolean gender, boolean isSmoker, boolean doesDrinkAlcohol,
                            boolean hasObesity, boolean physicalActivity){
@@ -137,12 +261,13 @@ public class Form implements Parcelable {
 
     public void page4Input(boolean hasHighFatDiet,boolean hasIDB,
                            boolean hasFamilyHistory,boolean hadPreviousColonCancer,
-                           boolean hadPreviousCancer){
+                           boolean hadPreviousCancer,boolean hadRadiationTherapy){
         this.hasHighFatDiet = (hasHighFatDiet) ? 1 : 0;
         this.hasIDB = (hasIDB) ? 1 : 0;
         this.hasFamilyHistory = (hasFamilyHistory) ? 1 : 0;
         this.hadPreviousColonCancer= (hadPreviousColonCancer) ? 1:0;
         this.hadPreviousCancer = (hadPreviousCancer) ?1:0;
+        this.hadRadiationTherapy = (hadRadiationTherapy) ? 1 : 0;
     }
 
     public void page5Input(boolean stroke, boolean difficultyWalking,
@@ -216,61 +341,6 @@ public class Form implements Parcelable {
         }
         else
             return false;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.age);
-        dest.writeInt(this.gender);
-        dest.writeInt(this.isSmoker);
-        dest.writeInt(this.doesDrinkAlcohol);
-        dest.writeInt(this.hasObesity);
-        dest.writeInt(this.physicalActivity);
-        dest.writeInt(this.airPollution);
-        dest.writeInt(this.alcoholUse);
-        dest.writeInt(this.dustAllergies);
-        dest.writeInt(this.occupationalHazards);
-        dest.writeInt(this.geneticRisk);
-        dest.writeInt(this.chronicLungDisease);
-        dest.writeInt(this.balancedDiet);
-        dest.writeInt(this.obesity);
-        dest.writeInt(this.smoking);
-        dest.writeInt(this.passiveSmoker);
-        dest.writeInt(this.chestPain);
-        dest.writeInt(this.coughing);
-        dest.writeInt(this.fatigue);
-        dest.writeInt(this.weightLoss);
-        dest.writeInt(this.shortnessOfBreath);
-        dest.writeInt(this.wheezing);
-        dest.writeInt(this.swallowingDifficulty);
-        dest.writeInt(this.clubbingFingerNails);
-        dest.writeInt(this.frequentColds);
-        dest.writeInt(this.dryCough);
-        dest.writeInt(this.snoring);
-        dest.writeInt(this.hadPreviousCancer);
-        dest.writeInt(this.hadPreviousColonCancer);
-        dest.writeInt(this.hasFamilyHistory);
-        dest.writeInt(this.isOldAge);
-        dest.writeInt(this.hasIDB);
-        dest.writeInt(this.exercisesRegularly);
-        dest.writeInt(this.hasHighFatDiet);
-        dest.writeInt(this.hasHadStroke);
-        dest.writeInt(this.difficultyWalking);
-        dest.writeInt(this.hasAsthma);
-        dest.writeInt(this.hadKidneyDisease);
-        dest.writeInt(this.hadPreviousSkinCancer);
-        dest.writeString(this.diabetic);
-        dest.writeString(this.generalHealth);
-        dest.writeString(this.race);
-        dest.writeInt(this.sleepTime);
-        dest.writeFloat(this.bmi);
-        dest.writeInt(this.physicalHealth);
-        dest.writeInt(this.mentalHealth);
     }
 
     public void readFromParcel(Parcel source) {
@@ -690,64 +760,4 @@ public class Form implements Parcelable {
         this.mentalHealth = mentalHealth;
     }
 
-    protected Form(Parcel in) {
-        this.age = in.readInt();
-        this.gender = in.readInt();
-        this.isSmoker = in.readInt();
-        this.doesDrinkAlcohol = in.readInt();
-        this.hasObesity = in.readInt();
-        this.physicalActivity = in.readInt();
-        this.airPollution = in.readInt();
-        this.alcoholUse = in.readInt();
-        this.dustAllergies = in.readInt();
-        this.occupationalHazards = in.readInt();
-        this.geneticRisk = in.readInt();
-        this.chronicLungDisease = in.readInt();
-        this.balancedDiet = in.readInt();
-        this.obesity = in.readInt();
-        this.smoking = in.readInt();
-        this.passiveSmoker = in.readInt();
-        this.chestPain = in.readInt();
-        this.coughing = in.readInt();
-        this.fatigue = in.readInt();
-        this.weightLoss = in.readInt();
-        this.shortnessOfBreath = in.readInt();
-        this.wheezing = in.readInt();
-        this.swallowingDifficulty = in.readInt();
-        this.clubbingFingerNails = in.readInt();
-        this.frequentColds = in.readInt();
-        this.dryCough = in.readInt();
-        this.snoring = in.readInt();
-        this.hadPreviousCancer = in.readInt();
-        this.hadPreviousColonCancer = in.readInt();
-        this.hasFamilyHistory = in.readInt();
-        this.isOldAge = in.readInt();
-        this.hasIDB = in.readInt();
-        this.exercisesRegularly = in.readInt();
-        this.hasHighFatDiet = in.readInt();
-        this.hasHadStroke = in.readInt();
-        this.difficultyWalking = in.readInt();
-        this.hasAsthma = in.readInt();
-        this.hadKidneyDisease = in.readInt();
-        this.hadPreviousSkinCancer = in.readInt();
-        this.diabetic = in.readString();
-        this.generalHealth = in.readString();
-        this.race = in.readString();
-        this.sleepTime = in.readInt();
-        this.bmi = in.readFloat();
-        this.physicalHealth = in.readInt();
-        this.mentalHealth = in.readInt();
-    }
-
-    public static final Parcelable.Creator<Form> CREATOR = new Parcelable.Creator<Form>() {
-        @Override
-        public Form createFromParcel(Parcel source) {
-            return new Form(source);
-        }
-
-        @Override
-        public Form[] newArray(int size) {
-            return new Form[size];
-        }
-    };
 }

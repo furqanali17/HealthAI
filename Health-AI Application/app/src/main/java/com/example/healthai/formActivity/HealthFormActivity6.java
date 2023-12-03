@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.healthai.R;
@@ -37,12 +39,18 @@ public class HealthFormActivity6 extends AppCompatActivity {
 
         RadioGroup rgDiabetic = findViewById(R.id.rgFormDiabetic);
         RadioGroup rgGeneralHealth = findViewById(R.id.rgFormGeneralHealth);
-        RadioGroup rgRace = findViewById(R.id.rgFormRace);
+        Spinner spRace = findViewById(R.id.spRace);
         TextInputEditText tiAvgSleep = findViewById(R.id.tiFormAverageSleepTime);
         TextInputEditText tiBmi = findViewById(R.id.tiFormBMI);
         TextInputEditText tiPhysHealthRating = findViewById(R.id.tiFormPhysicalHealthRating);
         TextInputEditText tiMentalHealth = findViewById(R.id.tiFormMentalHealthRating);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,R.array.race_array, android.R.layout.simple_spinner_item
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spRace.setAdapter(adapter);
 
         Button send1 = findViewById(R.id.button13);
         send1.setOnClickListener(view -> {
@@ -51,7 +59,12 @@ public class HealthFormActivity6 extends AppCompatActivity {
 
             formComplete = Form.validateRGInput(rgDiabetic,diabetic,formComplete);
             formComplete = Form.validateRGInput(rgGeneralHealth,generalHealth,formComplete);
-            formComplete = Form.validateRGInput(rgRace,race,formComplete);
+
+            if(spRace.getSelectedItem()!= null){
+                race.set(spRace.getSelectedItem().toString());
+            }
+            else
+                formComplete = false;
             if (!tiAvgSleep.getText().toString().matches("") && formComplete)
                 avgSleepTime.set(Integer.parseInt(tiAvgSleep.getText().toString()));
             else

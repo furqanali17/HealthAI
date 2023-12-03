@@ -42,4 +42,13 @@
     <string name="insurance_phone">Insurance Phone</string>
     <string name="save">Save</string>
     <string name="go_back_to_the_previous_screen">Go back to the previous screen</string>
+
+    <string-array name="race_array">
+        <item>White</item>
+        <item>Black</item>
+        <item>American Indian/Alaskan Native</item>
+        <item>Asian</item>
+        <item>Hispanic</item>
+        <item>Other</item>
+    </string-array>
 </resources>
