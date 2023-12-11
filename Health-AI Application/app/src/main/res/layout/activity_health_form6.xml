@@ -8,21 +8,19 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="383dp"
-        android:layout_height="591dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="90dp"
+        android:layout_width="411dp"
+        android:layout_height="790dp"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/button13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView44">
+        app:layout_constraintTop_toBottomOf="@+id/textView44">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -30,7 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Are you a diabetic?"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/rgFormDiabetic"
@@ -42,17 +41,20 @@
                     android:id="@+id/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
                     android:text="Yes" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="64dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="No" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:text="No, borderline diabetes" />
 
@@ -60,13 +62,15 @@
                     android:id="@+id/radioButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes (during pregnancy)" />
+                    android:layout_marginBottom="10dp"
+                    android:text="Yes(during pregnancy)" />
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="390dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -74,7 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="How is your general health?"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/rgFormGeneralHealth"
@@ -108,9 +113,8 @@
 
                 <RadioButton
                     android:id="@+id/radioButton5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="101dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Excellent" />
             </RadioGroup>
 
@@ -119,6 +123,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -126,7 +131,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Race "
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spRace"
@@ -139,6 +145,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -146,23 +153,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Physical Health Rating"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormPhysicalHealthRating"
-                    android:layout_width="200dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="80dp"
                     android:hint="1-30..."
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="363dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -171,16 +180,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Average Sleep Time"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormAverageSleepTime"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="100dp"
                     android:hint="1-24..."
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -196,16 +207,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Body Mass Index"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormBMI"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="123dp"
                     android:hint="Number..."
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -221,59 +234,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mental Health Rating"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiFormMentalHealthRating"
-                    android:layout_width="200dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="90dp"
                     android:hint="1-30..."
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-\
+        \
 
     </LinearLayout>
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="0dp"
+        android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <TextView
         android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/acme"
         android:text="HealthAI Form"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/btnFormBackPage3"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnFormBackPage3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

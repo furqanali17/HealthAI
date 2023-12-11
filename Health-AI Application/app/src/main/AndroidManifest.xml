@@ -17,8 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".formActivity.predictActivity"
+            android:exported="false" />
+        <activity
             android:name=".paypal.paypalActivity"
             android:exported="false" />
+
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
@@ -27,9 +31,6 @@
         <activity android:name=".formActivity.HealthFormActivity5" />
         <activity android:name=".formActivity.HealthFormActivity6" />
         <activity android:name=".docBotActivity.docBotActivity" />
-        <activity
-            android:name=".paypal.paypal_activity1"
-            android:exported="false" />
         <activity
             android:name=".fragments.UserFragment"
             android:exported="true"

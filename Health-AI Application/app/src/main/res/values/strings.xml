@@ -42,6 +42,8 @@
     <string name="insurance_phone">Insurance Phone</string>
     <string name="save">Save</string>
     <string name="go_back_to_the_previous_screen">Go back to the previous screen</string>
+    <string name="risk_level">Your risk level is</string>
+    <string name="predicting">Predicting...</string>
 
     <string-array name="race_array">
         <item>White</item>

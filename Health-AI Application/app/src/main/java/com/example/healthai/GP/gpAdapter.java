@@ -34,7 +34,7 @@ public class gpAdapter extends RecyclerView.Adapter<gpAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull gpAdapter.ViewHolder holder, int position) {
-        holder.gp_nameView.setText(gpList.get(position). getFullname());
+        holder.gp_nameView.setText(gpList.get(position).getFullname());
         holder.gp_sexView.setText(gpList.get(position).getSex());
         holder.gp_mobile.setText(gpList.get(position).getMobile());
         holder.gp_specialties.setText(gpList.get(position).getSpecialties());

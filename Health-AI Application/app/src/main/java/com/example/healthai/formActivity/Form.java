@@ -33,15 +33,6 @@ public class Form implements Parcelable {
     private int occupationalHazards; //
     private int geneticRisk; // cancer?
     private int chronicLungDisease; //
-
-    public int getHadRadiationTherapy() {
-        return hadRadiationTherapy;
-    }
-
-    public void setHadRadiationTherapy(int hadRadiationTherapy) {
-        this.hadRadiationTherapy = hadRadiationTherapy;
-    }
-
     private int balancedDiet; //
     private int obesity; //
     private int  smoking; //
@@ -391,6 +382,15 @@ public class Form implements Parcelable {
         this.physicalHealth = source.readInt();
         this.mentalHealth = source.readInt();
     }
+
+    public int getHadRadiationTherapy() {
+        return hadRadiationTherapy;
+    }
+
+    public void setHadRadiationTherapy(int hadRadiationTherapy) {
+        this.hadRadiationTherapy = hadRadiationTherapy;
+    }
+
 
     public int getAge() {
         return age;
