@@ -19,7 +19,7 @@ function loadFormData(patientId) {
         if (snapshot.exists()) {
             const formsData = snapshot.val();
             Object.keys(formsData).forEach(formId => {
-                updateFormDisplay(formsData[formId], formId);
+                updateFormDisplay(formsData[formId], formId, patientId);
             });
         } else {
             console.error('Form data not found');
@@ -27,12 +27,14 @@ function loadFormData(patientId) {
         }
     });
 }
-function updateFormDisplay(formData, formId) {
+
+async function updateFormDisplay(formData, formId, patientId) {
     const formDetailsSection = document.querySelector('.form-details');
     const formContainer = document.createElement('div');
     formContainer.classList.add('form-container');
     formContainer.innerHTML = `<h3>Form ID: ${formId}</h3>`;
 
+    // Display form details
     Object.entries(formData).forEach(([key, value]) => {
         const detailDiv = document.createElement('div');
         detailDiv.classList.add('form-detail-entry');
@@ -47,7 +49,45 @@ function updateFormDisplay(formData, formId) {
         formContainer.appendChild(detailDiv);
     });
 
+    try {
+        const predictions = await loadPredictions(patientId, formId);
+
+        // Display predictions
+        const predictionsDiv = document.createElement('div');
+        predictionsDiv.classList.add('predictions-container');
+        predictionsDiv.innerHTML = '<h3>Predictions</h3>';
+
+        Object.entries(predictions).forEach(([key, value]) => {
+            const predictionDetail = document.createElement('p');
+            predictionDetail.textContent = `${formatPredictionKey(key)}: ${value}`;
+            predictionsDiv.appendChild(predictionDetail);
+        });
+
+        formContainer.appendChild(predictionsDiv);
+    } catch (error) {
+        console.error(error);
+    }
+
     formDetailsSection.appendChild(formContainer);
+}
+
+function formatPredictionKey(key) {
+    // Convert "colonCancerPrediction" to "Colon Cancer Prediction"
+    const formattedKey = key.replace(/Prediction$/, ''); // Remove "Prediction" at the end
+    return formattedKey.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
+}
+
+function loadPredictions(patientId, formId) {
+    const predictionsRef = ref(database, `Users/${patientId}/predictions/`);
+    return new Promise((resolve, reject) => {
+        onValue(predictionsRef, (snapshot) => {
+            if (snapshot.exists()) {
+                resolve(snapshot.val());
+            } else {
+                reject('Predictions not found');
+            }
+        });
+    });
 }
 
 function formatValue(value) {
