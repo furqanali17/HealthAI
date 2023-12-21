@@ -162,6 +162,7 @@ footer {
 .insurance-details div {
     margin-bottom: 15px;
 }
+
 .form-details {
     display: flex;
     flex-direction: column;
@@ -169,7 +170,8 @@ footer {
     max-width: 100%;
 }
 
-.form-container, .predictions-container {
+.form-container,
+.predictions-container {
     width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
@@ -178,7 +180,8 @@ footer {
     box-sizing: border-box;
 }
 
-.form-detail-entry, .prediction-detail-entry {
+.form-detail-entry,
+.prediction-detail-entry {
     display: flex;
     align-items: flex-start;
     margin-bottom: 10px;

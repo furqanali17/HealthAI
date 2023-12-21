@@ -34,7 +34,6 @@ async function updateFormDisplay(formData, formId, patientId) {
     formContainer.classList.add('form-container');
     formContainer.innerHTML = `<h3>Form ID: ${formId}</h3>`;
 
-    // Display form details
     Object.entries(formData).forEach(([key, value]) => {
         const detailDiv = document.createElement('div');
         detailDiv.classList.add('form-detail-entry');
@@ -52,7 +51,6 @@ async function updateFormDisplay(formData, formId, patientId) {
     try {
         const predictions = await loadPredictions(patientId, formId);
 
-        // Display predictions
         const predictionsDiv = document.createElement('div');
         predictionsDiv.classList.add('predictions-container');
         predictionsDiv.innerHTML = '<h3>Predictions</h3>';
@@ -72,7 +70,6 @@ async function updateFormDisplay(formData, formId, patientId) {
 }
 
 function formatPredictionKey(key) {
-    // Convert "colonCancerPrediction" to "Colon Cancer Prediction"
     const formattedKey = key.replace(/Prediction$/, ''); // Remove "Prediction" at the end
     return formattedKey.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
 }
