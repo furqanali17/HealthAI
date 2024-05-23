@@ -1,5 +1,4 @@
 from flask import Flask, request
-
 from main import run_prediction
 
 app = Flask(__name__)
@@ -16,4 +15,4 @@ def predict_cc():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=65530)
