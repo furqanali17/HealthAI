@@ -36,7 +36,7 @@ public class docBotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doc_bot);
         sendBtn = findViewById(R.id.btnSendMessage);
         textInput = findViewById(R.id.tiMessage);
-        docBot = new DocBot("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");
+        docBot = new DocBot(DOCBOT_API_KEY);
 
 
 
