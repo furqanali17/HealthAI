@@ -1,4 +1,4 @@
-const API_KEY = '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';
+import { API_KEY } from './config.js';
 const API_URL = "https://api.openai.com/v1/chat/completions"; 
 
 var submitBtn = document.getElementById("submitBtn");
